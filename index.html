@@ -289,6 +289,81 @@
                 alert("Erreur de connexion. Vérifiez votre réseau.");
             }
         }
+                // Fonction utilitaire pour convertir un fichier en Base64
+        function fileToBase64(file) {
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result.split(',')[1]); // On extrait uniquement la donnée Base64
+            reader.onerror = (error) => reject(error);
+          });
+        }
+        
+        // Dans ton gestionnaire d'événement submit :
+        document.getElementById('booking-form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+        
+          // Récupération des valeurs des champs textuels
+          const nom = document.getElementById('nom').value;
+          const telephone = document.getElementById('telephone').value;
+          const adresse = document.getElementById('adresse').value;
+          const prestation = document.getElementById('prestation').value;
+          const velo = document.getElementById('velo').value;
+          const description = document.getElementById('description').value;
+        
+          // Traitement de la photo si le client en a sélectionné une
+          const photoInput = document.getElementById('photo');
+          let photoData = null;
+        
+          if (photoInput && photoInput.files.length > 0) {
+            const file = photoInput.files[0];
+            
+            // Vérification de la taille (max 4 Mo)
+            if (file.size > 4 * 1024 * 1024) {
+              alert("La photo est trop lourde (maximum 4 Mo). Veuillez en choisir une plus légère.");
+              return;
+            }
+        
+            try {
+              const base64Content = await fileToBase64(file);
+              photoData = {
+                filename: file.name,
+                content: base64Content
+              };
+            } catch (err) {
+              console.error("Erreur lors de la lecture du fichier :", err);
+            }
+          }
+        
+          // Envoi des données vers Vercel
+          try {
+            const response = await fetch('/api/send-email', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                nom,
+                telephone,
+                adresse,
+                prestation,
+                velo,
+                description,
+                photo: photoData // Transmission de la photo
+              })
+            });
+        
+            const result = await response.json();
+        
+            if (response.ok && result.success) {
+              alert("Votre réservation a bien été envoyée !");
+              document.getElementById('booking-form').reset();
+            } else {
+              alert("Erreur lors de l'envoi : " + (result.error || "Problème inconnu"));
+            }
+          } catch (error) {
+            console.error("Erreur réseau :", error);
+            alert("Impossible de joindre le serveur. Veuillez réessayer.");
+          }
+        });
     </script>
 </body>
 </html>
