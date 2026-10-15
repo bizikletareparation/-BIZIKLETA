@@ -8,7 +8,16 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { prestation, velo, description, nom, telephone, adresse } = req.body;
+    const { prestation, velo, description, nom, telephone, adresse, photo } = req.body;
+
+    // Préparation des pièces jointes si une photo est présente
+    const attachments = [];
+    if (photo && photo.content) {
+      attachments.push({
+        filename: photo.filename || 'photo-velo.jpg',
+        content: photo.content
+      });
+    }
 
     const data = await resend.emails.send({
       from: 'Bizikleta <onboarding@resend.dev>',
@@ -22,7 +31,9 @@ module.exports = async (req, res) => {
         <p><strong>Prestation :</strong> ${prestation}</p>
         <p><strong>Type de vélo :</strong> ${velo}</p>
         <p><strong>Description :</strong> ${description || 'Aucune'}</p>
+        <p><em>${photo ? '📸 Une photo a été jointe à cet e-mail.' : 'Pas de photo fournie.'}</em></p>
       `,
+      attachments: attachments
     });
 
     return res.status(200).json({ success: true, data });
