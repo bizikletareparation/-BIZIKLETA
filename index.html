@@ -93,7 +93,7 @@
         </div>
     </div>
 
-    <!-- Script de gestion des modales -->
+    <!-- Script de gestion -->
     <script>
         const contentTarifs = `
             <h2 class="text-2xl font-bold font-basque text-stone-900 mb-6 text-center">Tarifs & Prestations</h2>
@@ -201,7 +201,7 @@
             <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-4 text-left text-sm max-h-[70vh] overflow-y-auto pr-2">
                 <div>
                     <label class="block font-semibold text-stone-700 mb-1">Choix du forfait ou prestation</label>
-                    <select name="prestation" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
+                    <select name="prestation" id="prestation" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
                         <option value="">-- Sélectionnez une prestation --</option>
                         <option value="Révision Sécurité (49 €)">Révision Sécurité (49 €)</option>
                         <option value="Révision Intégrale (89 €)">Révision Intégrale (89 €)</option>
@@ -210,7 +210,7 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-stone-700 mb-1">Type de vélo</label>
-                    <select name="velo" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
+                    <select name="velo" id="velo" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
                         <option value="">-- Sélectionnez votre vélo --</option>
                         <option value="Vélo de ville / VTC">Vélo de ville / VTC</option>
                         <option value="Vélo électrique (VAE)">Vélo électrique (VAE)</option>
@@ -220,11 +220,11 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-stone-700 mb-1">Description du problème</label>
-                    <textarea name="description" rows="2" placeholder="Décrivez votre panne..." class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta"></textarea>
+                    <textarea name="description" id="description" rows="2" placeholder="Décrivez votre panne..." class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta"></textarea>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" name="nom" placeholder="Votre nom" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
-                    <input type="tel" name="telephone" placeholder="Votre téléphone" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="nom" id="nom" placeholder="Votre nom" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="tel" name="telephone" id="telephone" placeholder="Votre téléphone" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                 </div>
                 <!-- Champ pour la photo -->
                 <div class="mb-4">
@@ -236,7 +236,7 @@
                     class="w-full p-2 border rounded"
                   >
                 </div>
-                <input type="text" name="adresse" placeholder="Votre adresse à Grenoble" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                <input type="text" name="adresse" id="adresse" placeholder="Votre adresse à Grenoble" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                 <button type="submit" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md">
                     Envoyer ma demande
                 </button>
@@ -254,116 +254,46 @@
             document.getElementById('modal').classList.add('hidden');
         }
 
-        async function envoyerReservation(event) {
-            event.preventDefault();
-            const form = event.target;
-            
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    const container = document.getElementById('modal-content');
-                    container.innerHTML = `
-                        <div class="text-center py-8 space-y-4">
-                            <div class="text-5xl text-green-600"><i class="fa-solid fa-circle-check"></i></div>
-                            <h2 class="text-2xl font-bold font-basque text-stone-900">Demande de rendez-vous envoyée !</h2>
-                            <p class="text-stone-600 text-sm">Merci ! Votre message a bien été transmis à l'atelier. Nous vous recontacterons très rapidement.</p>
-                            <button onclick="closeModal()" class="bg-stone-900 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-rougeBizikleta transition">
-                                Fermer
-                            </button>
-                        </div>
-                    `;
-                } else {
-                    alert("Une erreur est survenue : " + (result.error || "Erreur inconnue"));
-                }
-            } catch (error) {
-                alert("Erreur de connexion. Vérifiez votre réseau.");
-            }
-        }
-                // Fonction utilitaire pour convertir un fichier en Base64
+        // Fonction utilitaire pour convertir un fichier en Base64
         function fileToBase64(file) {
           return new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result.split(',')[1]); // On extrait uniquement la donnée Base64
+            reader.onload = () => resolve(reader.result.split(',')[1]);
             reader.onerror = (error) => reject(error);
           });
         }
-        
-        // Dans ton gestionnaire d'événement submit :
-        document.getElementById('booking-form').addEventListener('submit', async (e) => {
-          e.preventDefault();
-        
-          // Récupération des valeurs des champs textuels
-          const nom = document.getElementById('nom').value;
-          const telephone = document.getElementById('telephone').value;
-          const adresse = document.getElementById('adresse').value;
-          const prestation = document.getElementById('prestation').value;
-          const velo = document.getElementById('velo').value;
-          const description = document.getElementById('description').value;
-        
-          // Traitement de la photo si le client en a sélectionné une
-          const photoInput = document.getElementById('photo');
-          let photoData = null;
-        
-          if (photoInput && photoInput.files.length > 0) {
-            const file = photoInput.files[0];
-            
-            // Vérification de la taille (max 4 Mo)
-            if (file.size > 4 * 1024 * 1024) {
-              alert("La photo est trop lourde (maximum 4 Mo). Veuillez en choisir une plus légère.");
-              return;
+
+        // Fonction unique de soumission gérant les champs et la photo
+        async function envoyerReservation(event) {
+            event.preventDefault();
+
+            const nom = document.getElementById('nom').value;
+            const telephone = document.getElementById('telephone').value;
+            const adresse = document.getElementById('adresse').value;
+            const prestation = document.getElementById('prestation').value;
+            const velo = document.getElementById('velo').value;
+            const description = document.getElementById('description').value;
+
+            // Traitement de la photo
+            const photoInput = document.getElementById('photo');
+            let photoData = null;
+
+            if (photoInput && photoInput.files.length > 0) {
+                const file = photoInput.files[0];
+                
+                if (file.size > 4 * 1024 * 1024) {
+                    alert("La photo est trop lourde (maximum 4 Mo). Veuillez en choisir une plus légère.");
+                    return;
+                }
+
+                try {
+                    const base64Content = await fileToBase64(file);
+                    photoData = {
+                        filename: file.name,
+                        content: base64Content
+                    };
+                } catch (err) {
+                    console.error("Erreur lors de la lecture du fichier :", err);
+                }
             }
-        
-            try {
-              const base64Content = await fileToBase64(file);
-              photoData = {
-                filename: file.name,
-                content: base64Content
-              };
-            } catch (err) {
-              console.error("Erreur lors de la lecture du fichier :", err);
-            }
-          }
-        
-          // Envoi des données vers Vercel
-          try {
-            const response = await fetch('/api/send-email', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                nom,
-                telephone,
-                adresse,
-                prestation,
-                velo,
-                description,
-                photo: photoData // Transmission de la photo
-              })
-            });
-        
-            const result = await response.json();
-        
-            if (response.ok && result.success) {
-              alert("Votre réservation a bien été envoyée !");
-              document.getElementById('booking-form').reset();
-            } else {
-              alert("Erreur lors de l'envoi : " + (result.error || "Problème inconnu"));
-            }
-          } catch (error) {
-            console.error("Erreur réseau :", error);
-            alert("Impossible de joindre le serveur. Veuillez réessayer.");
-          }
-        });
-    </script>
-</body>
-</html>
