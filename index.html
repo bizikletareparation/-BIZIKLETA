@@ -254,17 +254,15 @@
             document.getElementById('modal').classList.add('hidden');
         }
 
-        // Fonction utilitaire pour convertir un fichier en Base64
         function fileToBase64(file) {
-          return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result.split(',')[1]);
-            reader.onerror = (error) => reject(error);
-          });
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = (error) => reject(error);
+            });
         }
 
-        // Fonction unique de soumission gérant les champs et la photo
         async function envoyerReservation(event) {
             event.preventDefault();
 
@@ -275,7 +273,6 @@
             const velo = document.getElementById('velo').value;
             const description = document.getElementById('description').value;
 
-            // Traitement de la photo
             const photoInput = document.getElementById('photo');
             let photoData = null;
 
@@ -297,3 +294,44 @@
                     console.error("Erreur lors de la lecture du fichier :", err);
                 }
             }
+
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nom,
+                        telephone,
+                        adresse,
+                        prestation,
+                        velo,
+                        description,
+                        photo: photoData
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    const container = document.getElementById('modal-content');
+                    container.innerHTML = `
+                        <div class="text-center py-8 space-y-4">
+                            <div class="text-5xl text-green-600"><i class="fa-solid fa-circle-check"></i></div>
+                            <h2 class="text-2xl font-bold font-basque text-stone-900">Demande de rendez-vous envoyée !</h2>
+                            <p class="text-stone-600 text-sm">Merci ! Votre message a bien été transmis à l'atelier. Nous vous recontacterons très rapidement.</p>
+                            <button onclick="closeModal()" class="bg-stone-900 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-rougeBizikleta transition">
+                                Fermer
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    alert("Une erreur est survenue : " + (result.error || "Erreur inconnue"));
+                }
+            } catch (error) {
+                console.error("Erreur réseau :", error);
+                alert("Erreur de connexion. Vérifiez votre réseau.");
+            }
+        }
+    </script>
+</body>
+</html>
