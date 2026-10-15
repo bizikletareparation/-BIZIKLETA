@@ -226,6 +226,16 @@
                     <input type="text" name="nom" placeholder="Votre nom" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                     <input type="tel" name="telephone" placeholder="Votre téléphone" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                 </div>
+                <!-- Champ pour la photo -->
+                <div class="mb-4">
+                  <label for="photo" class="block font-medium mb-1">Photo du problème (optionnel, max 4 Mo) :</label>
+                  <input 
+                    type="file" 
+                    id="photo" 
+                    accept="image/*" 
+                    class="w-full p-2 border rounded"
+                  >
+                </div>
                 <input type="text" name="adresse" placeholder="Votre adresse à Grenoble" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                 <button type="submit" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md">
                     Envoyer ma demande
