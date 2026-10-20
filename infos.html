@@ -29,15 +29,27 @@
 </head>
 <body class="bg-beige text-stone-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-rougeBizikleta selection:text-white">
 
-    <!-- En-tête / Header -->
+    <!-- En-tête / Header avec navigation -->
     <header class="w-full border-b border-stone-300 py-6 px-4 bg-beige/80 backdrop-blur-md sticky top-0 z-40">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <a href="index.html" class="text-2xl font-black font-basque text-rougeBizikleta tracking-wide uppercase">
                 Bizikleta
             </a>
-            <a href="index.html" class="text-xs sm:text-sm font-semibold text-stone-700 hover:text-rougeBizikleta transition flex items-center gap-2">
-                <i class="fa-solid fa-arrow-left"></i> Retour à l'accueil
-            </a>
+            
+            <!-- Liens et onglets de navigation -->
+            <nav class="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-semibold">
+                <a href="index.html?modal=tarifs" class="text-stone-700 hover:text-rougeBizikleta transition">
+                    Tarifs
+                </a>
+                <span class="text-stone-400 font-light">•</span>
+                <a href="index.html?modal=reservation" class="text-stone-700 hover:text-rougeBizikleta transition">
+                    Réservation
+                </a>
+                <span class="text-stone-400 font-light">•</span>
+                <a href="index.html" class="text-stone-500 hover:text-stone-900 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> Accueil
+                </a>
+            </nav>
         </div>
     </header>
 
@@ -134,13 +146,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Bouton d'action -->
-        <div class="text-center pt-4">
-            <a href="index.html" class="inline-block bg-rougeBizikleta text-white px-8 py-4 rounded-xl font-bold hover:bg-red-700 transition shadow-md">
-                Réserver une réparation
-            </a>
-        </div>
 
     </main>
 
