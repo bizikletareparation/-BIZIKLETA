@@ -433,6 +433,14 @@
                 alert("Erreur de connexion. Vérifiez votre réseau.");
             }
         }
+                // Détecter si un paramètre d'URL demande d'ouvrir une modale au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const modalParam = urlParams.get('modal');
+            if (modalParam) {
+                openModal(modalParam);
+            }
+        });
     </script>
 </body>
 </html>
