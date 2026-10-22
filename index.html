@@ -295,15 +295,6 @@
             <h2 class="text-2xl font-bold font-basque text-stone-900 mb-4">Réservation à Grenoble</h2>
             <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-4 text-left text-sm max-h-[70vh] overflow-y-auto pr-2">
                 <div>
-                    <label class="block font-semibold text-stone-700 mb-1">Choix du forfait ou prestation</label>
-                    <select name="prestation" id="prestation" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
-                        <option value="">-- Sélectionnez une prestation --</option>
-                        <option value="Révision Sécurité (49 €)">Révision Sécurité (49 €)</option>
-                        <option value="Révision Intégrale (89 €)">Révision Intégrale (89 €)</option>
-                        <option value="Crevaison / À la carte">Crevaison / À la carte</option>
-                    </select>
-                </div>
-                <div>
                     <label class="block font-semibold text-stone-700 mb-1">Type de vélo</label>
                     <select name="velo" id="velo" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
                         <option value="">-- Sélectionnez votre vélo --</option>
@@ -314,12 +305,22 @@
                     </select>
                 </div>
                 <div>
+                    <label class="block font-semibold text-stone-700 mb-1">Choix du forfait ou prestation</label>
+                    <select name="prestation" id="prestation" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
+                        <option value="">-- Sélectionnez une prestation --</option>
+                        <option value="Révision Sécurité (49 €)">Révision Sécurité (49 €)</option>
+                        <option value="Révision Intégrale (89 €)">Révision Intégrale (89 €)</option>
+                        <option value="Crevaison / À la carte">Crevaison / À la carte</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block font-semibold text-stone-700 mb-1">Description du problème</label>
                     <textarea name="description" id="description" rows="2" placeholder="Décrivez votre panne..." class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta"></textarea>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input type="text" name="nom" id="nom" placeholder="Votre nom" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                     <input type="tel" name="telephone" id="telephone" placeholder="Votre téléphone" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="adresse" id="adresse" placeholder="Votre adresse à Grenoble" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                 </div>
                 <!-- Champ pour la photo -->
                 <div class="mb-4">
@@ -331,7 +332,6 @@
                     class="w-full p-2 border rounded-xl text-xs bg-stone-50"
                   >
                 </div>
-                <input type="text" name="adresse" id="adresse" placeholder="Votre adresse à Grenoble" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
                 <button type="submit" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md">
                     Envoyer ma demande
                 </button>
