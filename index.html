@@ -42,18 +42,16 @@
             </p>
         </div>
 
-        <!-- Liens principaux : Tarifs, En savoir plus & Réservation -->
+        <!-- Liens principaux -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 w-full">
-            <button onclick="openModal('tarifs')" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
+            <button onclick="openModal('modal-tarifs')" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
                 Tarifs
             </button>
             <span class="hidden sm:inline text-stone-400 font-light">•</span>
-            <button onclick="openModal('reservation')" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
+            <button onclick="openModal('modal-reservation')" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
                 Réservation
             </button>
             <span class="hidden sm:inline text-stone-400 font-light">•</span>
-            
-            <!-- Lien direct vers la page web dédiée -->
             <a href="infos.html" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
                 En savoir plus
             </a>
@@ -87,47 +85,29 @@
         </div>
     </footer>
 
-    <!-- Fenêtre Modale Unique -->
-    <div id="modal" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10">
+    <!-- MODALE TARIFS -->
+    <div id="modal-tarifs" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-4">
+            <button onclick="closeModal('modal-tarifs')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div id="modal-content">
-                <!-- Le contenu dynamique s'affichera ici -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Script de gestion des modales et formulaires -->
-    <script>
-        const contentTarifs = `
-            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-6 text-center">Tarifs & Prestations</h2>
-            <div class="space-y-6 text-left text-sm text-stone-700 max-h-[70vh] overflow-y-auto pr-3">
-                
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-4 text-center">Tarifs & Prestations</h2>
+            
+            <div class="space-y-6 text-left text-sm text-stone-700 max-h-[65vh] overflow-y-auto pr-3">
                 <!-- RÉVISIONS -->
                 <div class="space-y-2">
                     <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Révision</h3>
                     <ul class="space-y-2 text-xs">
                         <li class="flex justify-between border-b border-stone-100 pb-1">
-                            <div>
-                                <span class="font-bold text-stone-900">Forfait révision SECURITE</span>
-                                <p class="text-[10px] text-stone-500">Contrôle, Serrage & Réglage (freins, dérailleur, direction)</p>
-                            </div>
+                            <div><span class="font-bold text-stone-900">Forfait révision SECURITE</span><p class="text-[10px] text-stone-500">Contrôle, Serrage & Réglage (freins, dérailleur, direction)</p></div>
                             <span class="font-semibold text-rougeBizikleta">50 €</span>
                         </li>
                         <li class="flex justify-between border-b border-stone-100 pb-1">
-                            <div>
-                                <span class="font-bold text-stone-900">Forfait révision INTEGRALE</span>
-                                <p class="text-[10px] text-stone-500">SECURITE + Changement pièce (cassette, chaîne, plaquettes/patins) + Moyeu roue</p>
-                            </div>
+                            <div><span class="font-bold text-stone-900">Forfait révision INTEGRALE</span><p class="text-[10px] text-stone-500">SECURITE + Changement pièce (cassette, chaîne, plaquettes/patins) + Moyeu roue</p></div>
                             <span class="font-semibold text-rougeBizikleta">90 €</span>
                         </li>
                         <li class="flex justify-between border-b border-stone-100 pb-1">
-                            <div>
-                                <span class="font-bold text-stone-900">Forfait révision PERFORMANCE</span>
-                                <p class="text-[10px] text-stone-500">INTEGRALE + câble et gaine (dérailleur & freins) / Purges</p>
-                            </div>
+                            <div><span class="font-bold text-stone-900">Forfait révision PERFORMANCE</span><p class="text-[10px] text-stone-500">INTEGRALE + câble et gaine (dérailleur & freins) / Purges</p></div>
                             <span class="font-semibold text-rougeBizikleta">130 €</span>
                         </li>
                     </ul>
@@ -148,14 +128,10 @@
                     <ul class="space-y-2 text-xs">
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison roue motorisée / moyeu spécial</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage pneu tubeless (préventif + fond de jante + valve)</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage pneu tubeless</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Dévoilage simple</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un rayon</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu moyeu (Av. ou Arr.)</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue avant</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue arrière</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement de cercle / jante</span><span class="font-semibold text-rougeBizikleta">90 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un roulement</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cercle / jante</span><span class="font-semibold text-rougeBizikleta">90 €</span></li>
                     </ul>
                 </div>
 
@@ -163,21 +139,9 @@
                 <div class="space-y-2">
                     <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Transmission</h3>
                     <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage dérailleur avant ou arrière</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage cassette / roue libre</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un câble</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur (Av. ou Arr.)</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur passage interne</span><span class="font-semibold text-rougeBizikleta">40 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement dérailleur avant ou arrière</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier / graissage</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédalier</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patte de dérailleur</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Dégauchissage patte de dérailleur</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage dérailleur</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement chaîne</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter VTT</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter route</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédales</span><span class="font-semibold text-rougeBizikleta">10 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Nettoyage transmission rapide</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier / graissage</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
                     </ul>
                 </div>
 
@@ -185,54 +149,24 @@
                 <div class="space-y-2">
                     <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Freinage</h3>
                     <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine de frein</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine (passage interne)</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins V-brake / route (la paire)</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à patins</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'étrier de frein à patin</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Purge d'un frein hydraulique</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'une durite passage en interne</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement plaquettes (la paire)</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement disque + réglage</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à disque</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un frein hydraulique complet</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement frein hydraulique complet</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
                     </ul>
                 </div>
-
-                <!-- DIRECTION -->
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Direction</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu de direction</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement jeu de direction</span><span class="font-semibold text-rougeBizikleta">40 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose guidoline</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement potence</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre route (pose guidoline incluse)</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement poignées</span><span class="font-semibold text-rougeBizikleta">10 €</span></li>
-                    </ul>
-                </div>
-
-                <!-- DIVERS ET MONTAGES -->
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Divers & Montages</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage petit accessoire</span><span class="font-semibold text-rougeBizikleta">8 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose porte-bagages</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose garde-boue</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo simple</span><span class="font-semibold text-rougeBizikleta">70 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet patin</span><span class="font-semibold text-rougeBizikleta">200 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet hydraulique</span><span class="font-semibold text-rougeBizikleta">300 €</span></li>
-                    </ul>
-                </div>
-
             </div>
-        `;
+        </div>
+    </div>
 
-        const contentReservation = `
-            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-4 text-center">Réservation à Grenoble</h2>
-            <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-4 text-left text-sm max-h-[70vh] overflow-y-auto pr-2">
+    <!-- MODALE RÉSERVATION -->
+    <div id="modal-reservation" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-4">
+            <button onclick="closeModal('modal-reservation')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-2 text-center">Réservation à Grenoble</h2>
+            
+            <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-3 text-left text-sm max-h-[65vh] overflow-y-auto pr-2">
                 <div>
                     <label class="block font-semibold text-stone-700 mb-1 text-xs">Type de vélo *</label>
                     <select name="velo" id="velo" class="w-full p-2.5 border rounded-xl bg-white text-xs focus:outline-none focus:border-rougeBizikleta" required>
@@ -264,7 +198,7 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-stone-700 mb-1 text-xs">Description du problème</label>
-                    <textarea name="description" id="description" rows="2" placeholder="Décrivez la panne, le bruit ou le besoin..." class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta"></textarea>
+                    <textarea name="description" id="description" rows="2" placeholder="Décrivez la panne ou le besoin..." class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta"></textarea>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input type="text" name="nom" id="nom" placeholder="Votre nom *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
@@ -274,28 +208,106 @@
                 </div>
                 <div>
                   <label for="photo" class="block font-medium mb-1 text-xs text-stone-600">Photo du problème (optionnel, max 4 Mo) :</label>
-                  <input 
-                    type="file" 
-                    id="photo" 
-                    accept="image/*" 
-                    class="w-full p-2 border rounded-xl text-xs bg-stone-50"
-                  >
+                  <input type="file" id="photo" accept="image/*" class="w-full p-2 border rounded-xl text-xs bg-stone-50">
                 </div>
                 <button type="submit" id="submit-btn" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md">
                     Envoyer ma demande
                 </button>
             </form>
-        `;
+        </div>
+    </div>
 
-        function openModal(type) {
-            const modal = document.getElementById('modal');
-            const container = document.getElementById('modal-content');
-            
-            if (type === 'tarifs') {
-                container.innerHTML = contentTarifs;
-            } else if (type === 'reservation') {
-                container.innerHTML = contentReservation;
-            }
-            
-            modal.classList.remove('hidden');
+    <!-- Script de gestion simple et direct -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
         }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = (error) => reject(error);
+            });
+        }
+
+        async function envoyerReservation(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "Envoi en cours...";
+            }
+
+            const nom = document.getElementById('nom').value;
+            const telephone = document.getElementById('telephone').value;
+            const adresse = document.getElementById('adresse').value;
+            const codePostal = document.getElementById('code_postal').value;
+            const prestation = document.getElementById('prestation').value;
+            const velo = document.getElementById('velo').value;
+            const description = document.getElementById('description').value;
+
+            const photoInput = document.getElementById('photo');
+            let photoData = null;
+
+            if (photoInput && photoInput.files.length > 0) {
+                const file = photoInput.files[0];
+                if (file.size > 4 * 1024 * 1024) {
+                    alert("La photo est trop lourde (maximum 4 Mo).");
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerText = "Envoyer ma demande";
+                    }
+                    return;
+                }
+                try {
+                    const base64Content = await fileToBase64(file);
+                    photoData = { filename: file.name, content: base64Content };
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nom,
+                        telephone,
+                        adresse: `${adresse} (${codePostal})`,
+                        prestation,
+                        velo,
+                        description,
+                        photo: photoData
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    alert("Demande envoyée avec succès ! Je vous recontacte rapidement.");
+                    closeModal('modal-reservation');
+                    document.getElementById('reservation-form').reset();
+                } else {
+                    alert("Erreur lors de l'envoi. Appelez directement au 06 14 75 36 47.");
+                }
+            } catch (err) {
+                console.error(err);
+                alert("Impossible de joindre le serveur. Appelez directement au 06 14 75 36 47.");
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Envoyer ma demande";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
