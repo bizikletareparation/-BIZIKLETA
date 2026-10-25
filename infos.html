@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>En savoir plus | Bizikleta Grenoble</title>
+    <title>Informations & Contact | Bizikleta Grenoble</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -29,148 +28,118 @@
 </head>
 <body class="bg-beige text-stone-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-rougeBizikleta selection:text-white">
 
-    <!-- En-tête / Header -->
-    <header class="w-full border-b border-stone-300 py-6 px-4 bg-beige/80 backdrop-blur-md sticky top-0 z-40">
-        <div class="max-w-4xl mx-auto flex flex-row items-center justify-start gap-6 sm:gap-8">
-            <!-- Logo / Nom de l'atelier -->
-            <a href="index.html" class="text-2xl font-black font-basque text-rougeBizikleta tracking-wide uppercase">
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 bg-beige/90 backdrop-blur-md border-b border-stone-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="index.html" class="text-xl font-black font-basque text-rougeBizikleta tracking-wide uppercase">
                 Bizikleta
             </a>
-            
-            <!-- Uniquement Tarifs et Réservation -->
-            <nav class="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-semibold">
-                <a href="index.html?modal=tarifs" class="text-stone-700 hover:text-rougeBizikleta transition">
-                    Tarifs
-                </a>
-                <span class="text-stone-400 font-light">•</span>
-                <a href="index.html?modal=reservation" class="text-stone-700 hover:text-rougeBizikleta transition">
-                    Réservation
-                </a>
+            <nav class="flex items-center space-x-6 text-sm font-semibold">
+                <a href="index.html" class="hover:text-rougeBizikleta transition">Accueil</a>
+                <button onclick="openModal('modal-tarifs')" class="hover:text-rougeBizikleta transition cursor-pointer">Tarifs</button>
+                <button onclick="openModal('modal-reservation')" class="hover:text-rougeBizikleta transition cursor-pointer">Réservation</button>
             </nav>
         </div>
     </header>
 
-    <!-- Contenu Principal -->
-    <main class="flex-grow max-w-3xl mx-auto px-4 py-12 space-y-12">
+    <!-- MAIN CONTENT -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 flex-grow">
         
-        <!-- Titre -->
-        <div class="text-center space-y-2">
-            <h1 class="text-4xl sm:text-5xl font-black font-basque text-stone-900">
-                À propos de l'atelier
-            </h1>
-            <p class="text-sm uppercase tracking-widest text-stone-600 font-semibold">
-                Réparation & entretien de vélos à Grenoble
+        <!-- Zone d'intervention -->
+        <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+            <h1 class="text-2xl font-black font-basque text-stone-900">Zone d'intervention & Fonctionnement</h1>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                Bizikleta intervient directement à domicile ou sur votre lieu de travail dans toute l'agglomération de **Grenoble** (Grenoble, Saint-Martin-d'Hères, Échirolles, Fontaine, Meylan, La Tronche, Saint-Égrève, etc.). 
+            </p>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                Aucun déplacement à prévoir de votre part : nous venons équipés de tout le matériel professionnel nécessaire pour réaliser l'entretien et les réparations sur place.
             </p>
         </div>
 
-        <!-- 1. Comment ça marche -->
-        <section class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 space-y-4">
-            <h2 class="text-xl font-bold font-basque text-stone-900 border-b pb-2 uppercase tracking-wider text-rougeBizikleta flex items-center gap-2">
-                <i class="fa-solid fa-list-check"></i> 1. Comment ça marche ?
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                <div class="p-4 bg-stone-50 rounded-xl border border-stone-200 text-center space-y-2">
-                    <span class="text-rougeBizikleta font-bold text-xl">1</span>
-                    <p class="font-bold text-sm text-stone-900">Réservation</p>
-                    <p class="text-xs text-stone-600">Sélectionnez la prestation et décrivez votre problème en ligne.</p>
+        <!-- Contact direct -->
+        <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+            <h2 class="text-xl font-black font-basque text-stone-900">Contact direct</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-stone-700">
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <p class="font-bold text-stone-900">📞 Téléphone</p>
+                    <p class="text-stone-600 mt-1">06 14 75 36 47</p>
                 </div>
-                <div class="p-4 bg-stone-50 rounded-xl border border-stone-200 text-center space-y-2">
-                    <span class="text-rougeBizikleta font-bold text-xl">2</span>
-                    <p class="font-bold text-sm text-stone-900">Rendez-vous</p>
-                    <p class="text-xs text-stone-600">Je me déplace à votre domicile ou lieu de travail à Grenoble.</p>
-                </div>
-                <div class="p-4 bg-stone-50 rounded-xl border border-stone-200 text-center space-y-2">
-                    <span class="text-rougeBizikleta font-bold text-xl">3</span>
-                    <p class="font-bold text-sm text-stone-900">Repartez !</p>
-                    <p class="text-xs text-stone-600">Votre vélo est réparé sur place et prêt à rouler.</p>
+                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                    <p class="font-bold text-stone-900">✉️ Email</p>
+                    <p class="text-stone-600 mt-1">bizikleta.reparation@gmail.com</p>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- 2. Zone d'intervention -->
-        <section class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 space-y-3">
-            <h2 class="text-xl font-bold font-basque text-stone-900 border-b pb-2 uppercase tracking-wider text-rougeBizikleta flex items-center gap-2">
-                <i class="fa-solid fa-location-dot"></i> 2. Zone d'intervention
-            </h2>
-            <p class="text-sm text-stone-700 leading-relaxed">
-                Je me déplace directement chez vous ou sur votre lieu de travail à <strong>Grenoble</strong> et ses communes proches (Échirolles, Saint-Martin-d'Hères, Fontaine, Meylan, La Tronche, etc.). 
-            </p>
-            <p class="text-xs font-semibold text-stone-500">
-                <i class="fa-solid fa-clock mr-1"></i> Disponible du lundi au dimanche, de 8h à 19h.
-            </p>
-        </section>
-
-        <!-- 3. Avis clients -->
-        <section class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 space-y-4">
-            <h2 class="text-xl font-bold font-basque text-stone-900 border-b pb-2 uppercase tracking-wider text-rougeBizikleta flex items-center gap-2">
-                <i class="fa-solid fa-star"></i> 3. Avis Clients
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100 space-y-2">
-                    <div class="flex text-amber-400 text-xs">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="italic text-xs text-stone-700">« Intervention ultra rapide chez moi à Grenoble pour une crevaison et un réglage de dérailleur. Service impeccable ! »</p>
-                    <p class="font-bold text-stone-900 text-xs">— Thomas G.</p>
-                </div>
-                <div class="p-4 bg-stone-50 rounded-xl border border-stone-100 space-y-2">
-                    <div class="flex text-amber-400 text-xs">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="italic text-xs text-stone-700">« Très pro et de super conseils pour mon vélo électrique. Je recommande vivement à 100%. »</p>
-                    <p class="font-bold text-stone-900 text-xs">— Claire M.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4. FAQ -->
-        <section class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 space-y-4">
-            <h2 class="text-xl font-bold font-basque text-stone-900 border-b pb-2 uppercase tracking-wider text-rougeBizikleta flex items-center gap-2">
-                <i class="fa-solid fa-circle-question"></i> 4. Foire Aux Questions (FAQ)
-            </h2>
-            <div class="space-y-4 text-sm">
-                <div>
-                    <p class="font-bold text-stone-900">Faut-il prévoir un espace particulier pour l'intervention ?</p>
-                    <p class="text-stone-600 text-xs mt-1">Non, un simple espace dégagé sur le trottoir, dans votre cour, garage ou local à vélo suffit amplement.</p>
-                </div>
-                <div>
-                    <p class="font-bold text-stone-900">Quels types de vélos réparez-vous ?</p>
-                    <p class="text-stone-600 text-xs mt-1">Tous types : vélos de ville, VTC, VTT, vélos électriques (VAE), vélos cargos et vélos de route.</p>
-                </div>
-                <div>
-                    <p class="font-bold text-stone-900">Quels sont les moyens de paiement acceptés ?</p>
-                    <p class="text-stone-600 text-xs mt-1">Paiement par carte bancaire, espèces ou virement après l'intervention.</p>
-                </div>
-            </div>
-        </section>
+        <!-- Mentions légales -->
+        <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4 text-xs text-stone-600">
+            <h2 class="text-xl font-black font-basque text-stone-900">Mentions Légales</h2>
+            <p><strong>Statut :</strong> micro-entreprise / entreprise individuelle (prestation de services et réparation de cycles).</p>
+            <p><strong>Siège social :</strong> Grenoble (38000), Isère, France.</p>
+            <p><strong>Propriété intellectuelle :</strong> L'ensemble des éléments du site Bizikleta (textes, logos, visuels) est protégé.</p>
+        </div>
 
     </main>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="w-full border-t border-stone-300 py-8 px-4 text-stone-700 text-xs sm:text-sm">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div>
-                <p class="font-bold text-stone-900">Grenoble & Alentours</p>
-            </div>
-            
-            <div class="space-y-2 text-center">
-                <p>
-                    <a href="tel:0614753647" class="hover:text-rougeBizikleta transition font-semibold">06 14 75 36 47</a> 
-                    <span class="mx-2">•</span> 
-                    <a href="mailto:bizikleta.reparation@gmail.com" class="hover:text-rougeBizikleta transition">bizikleta.reparation@gmail.com</a>
-                </p>
-            </div>
-
-            <div class="text-center md:text-right">
-                <p class="font-bold text-stone-900">Lundi-Dimanche</p>
-                <p class="text-stone-600">8h-19h</p>
-            </div>
+            <p>© 2026 Bizikleta – Atelier mobile de réparation de vélos à Grenoble.</p>
+            <a href="index.html" class="hover:text-rougeBizikleta transition font-semibold">Retour à l'accueil</a>
         </div>
     </footer>
 
-</body>
-</html>
-    </footer>
+    <!-- MODALE TARIFS (Intégrée aussi ici) -->
+    <div id="modal-tarifs" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-4">
+            <button onclick="closeModal('modal-tarifs')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10 cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-4 text-center">Tarifs & Prestations</h2>
+            <div class="space-y-6 text-left text-sm text-stone-700 max-h-[65vh] overflow-y-auto pr-3">
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Révision</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Forfait SÉCURITÉ</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Forfait INTÉGRALE</span><span class="font-semibold text-rougeBizikleta">90 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Forfait PERFORMANCE</span><span class="font-semibold text-rougeBizikleta">130 €</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- MODALE RÉSERVATION (Intégrée aussi ici) -->
+    <div id="modal-reservation" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-4">
+            <button onclick="closeModal('modal-reservation')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10 cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-2 text-center">Réservation à Grenoble</h2>
+            <form onsubmit="alert('Demande simulée depuis la page infos'); return false;" class="space-y-3 text-left text-sm">
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Type de vélo *</label>
+                    <select class="w-full p-2.5 border rounded-xl bg-white text-xs" required>
+                        <option value="">-- Sélectionnez --</option>
+                        <option value="Ville">Vélo de ville / VTC</option>
+                        <option value="VAE">Vélo électrique (VAE)</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md cursor-pointer">
+                    Envoyer ma demande
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script modales pour infos.html -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
