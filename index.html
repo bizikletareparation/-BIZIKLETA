@@ -100,107 +100,155 @@
         </div>
     </div>
 
-    <!-- Script de gestion -->
-    <script>
-        const contentTarifs = `
-            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-6 text-center">Tarifs & Prestations</h2>
-            <div class="space-y-6 text-left text-sm text-stone-700 max-h-[70vh] overflow-y-auto pr-3">
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Révision</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Forfait révision Niveau 1</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Forfait révision Niveau 2</span><span class="font-semibold text-rougeBizikleta">80 €</span></li>
-                    </ul>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Roues et pneumatiques</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison (chambre comprise)</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison roue arrière hollandais carter intégral</span><span class="font-semibold text-rougeBizikleta">36 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage d'un pneu tubeless (préventif + fond de jante + valve)</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison roue motorisée</span><span class="font-semibold text-rougeBizikleta">40 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison moyeu special</span><span class="font-semibold text-rougeBizikleta">sur devis</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Dévoilage simple</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un rayon</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu moyeu (Av. ou Arr.)</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue avant</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue arrière</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement de cercle / jante</span><span class="font-semibold text-rougeBizikleta">60 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un roulement</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                    </ul>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Transmission</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage dérailleur avant ou arrière</span><span class="font-semibold text-rougeBizikleta">10 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage cassette / roue libre</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur (Av. ou Arr.)</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur passage en interne</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement dérailleur avant ou arrière, câble et gaine inclus</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier / graissage</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier avec rafraîchissement filet</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose insert manivelle (insert inclus)</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédalier</span><span class="font-semibold text-rougeBizikleta">28 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patte de dérailleur</span><span class="font-semibold text-rougeBizikleta">16 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Dégauchissage patte de dérailleur</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement chaîne</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter route</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédales</span><span class="font-semibold text-rougeBizikleta">6 €</span></li>
-                    </ul>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Freinage</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine de frein</span><span class="font-semibold text-rougeBizikleta">22 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine de frein passage interne</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins V-brake / route (la paire)</span><span class="font-semibold text-rougeBizikleta">12 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins Magura HS11 HS33</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à patins</span><span class="font-semibold text-rougeBizikleta">12 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'étrier de frein à patin</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'une durite + purge</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'une durite passage en interne</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement plaquettes (la paire)</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement disque + réglage</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à disque</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un frein hydraulique complet</span><span class="font-semibold text-rougeBizikleta">40 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Purge d'un frein hydraulique</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                    </ul>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Direction</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu de direction</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement jeu de direction</span><span class="font-semibold text-rougeBizikleta">38 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose guidoline</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement potence</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre</span><span class="font-semibold text-rougeBizikleta">22 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre route (pose guidoline incluse)</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement poignées</span><span class="font-semibold text-rougeBizikleta">5 €</span></li>
-                    </ul>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Éclairage</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose phare avant ou arrière dynamo</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Câblage complet éclairage avant et arrière (système dynamo)</span><span class="font-semibold text-rougeBizikleta">55 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement ampoule</span><span class="font-semibold text-rougeBizikleta">4 €</span></li>
-                    </ul>
-                </div>
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Divers</h3>
-                    <ul class="space-y-2 text-xs">
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage minute petit accessoire</span><span class="font-semibold text-rougeBizikleta">8 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose porte-bagages</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose garde-boue</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose siège bébé</span><span class="font-semibold text-rougeBizikleta">17 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Révision fourche</span><span class="font-semibold text-rougeBizikleta">Sur devis</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo internet</span><span class="font-semibold text-rougeBizikleta">70 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet patin</span><span class="font-semibold text-rougeBizikleta">270 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet hydraulique</span><span class="font-semibold text-rougeBizikleta">320 €</span></li>
-                        <li class="flex justify-between pb-1"><span>Nettoyage vélo</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
-                    </ul>
-                </div>
+       <!-- Modal Content : Tarifs Bizikleta -->
+    <div class="space-y-6 max-h-[80vh] overflow-y-auto pr-2">
+    
+      <!-- 1. FORFAITS RÉVISION -->
+      <div>
+        <h3 class="font-bold text-stone-900 border-b-2 border-rougeBizikleta pb-1 uppercase tracking-wider text-xs">
+          🛠️ Forfaits de Révision
+        </h3>
+        <div class="mt-3 space-y-3 text-xs">
+          <div class="flex justify-between items-start border-b border-stone-100 pb-2">
+            <div>
+              <p class="font-bold text-stone-900">Forfait Révision SÉCURITÉ</p>
+              <p class="text-stone-500 text-[11px]">Contrôle, serrage & réglage (freins, dérailleur, direction).</p>
             </div>
+            <span class="font-bold text-rougeBizikleta text-sm whitespace-nowrap ml-2">50 €</span>
+          </div>
+    
+          <div class="flex justify-between items-start border-b border-stone-100 pb-2">
+            <div>
+              <p class="font-bold text-stone-900">Forfait Révision INTÉGRALE</p>
+              <p class="text-stone-500 text-[11px]">SÉCURITÉ + changement pièces (cassette, chaîne, plaquettes/patins) + moyeu roue.</p>
+            </div>
+            <span class="font-bold text-rougeBizikleta text-sm whitespace-nowrap ml-2">90 €</span>
+          </div>
+    
+          <div class="flex justify-between items-start pb-1">
+            <div>
+              <p class="font-bold text-stone-900">Forfait Révision PERFORMANCE</p>
+              <p class="text-stone-500 text-[11px]">INTÉGRALE + câbles & gaines (dérailleur & freins) / Purges.</p>
+            </div>
+            <span class="font-bold text-rougeBizikleta text-sm whitespace-nowrap ml-2">130 €</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- 2. CREVAISON EXPRESS -->
+      <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+        <h3 class="font-bold text-stone-900 uppercase tracking-wider text-xs text-rougeBizikleta flex items-center gap-1">
+          ⚡ CREVAISON EXPRESS
+        </h3>
+        <div class="mt-2 space-y-1.5 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="text-stone-700">Roue classique</span>
+            <span class="font-bold text-stone-900">25 €</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-stone-700">Roue moteur arrière / moyeu spécial</span>
+            <span class="font-bold text-stone-900">40 €</span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- 3. ROUES ET PNEUMATIQUES -->
+      <div>
+        <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+          🚲 Roues & Pneumatiques
+        </h3>
+        <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-stone-600">
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison</span><span class="font-semibold text-stone-900">15 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison roue motorisée / moyeu spécial</span><span class="font-semibold text-stone-900">30 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage pneu tubeless (préventif + fond + valve)</span><span class="font-semibold text-stone-900">45 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Dévoilage simple</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un rayon</span><span class="font-semibold text-stone-900">35 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu moyeu (Av. ou Arr.)</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue avant</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue arrière</span><span class="font-semibold text-stone-900">25 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement de cercle / jante</span><span class="font-semibold text-stone-900">90 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un roulement</span><span class="font-semibold text-stone-900">30 €</span></div>
+        </div>
+      </div>
+    
+      <!-- 4. TRANSMISSION -->
+      <div>
+        <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+          ⚙️ Transmission
+        </h3>
+        <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-stone-600">
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage dérailleur (Av. ou Arr.)</span><span class="font-semibold text-stone-900">15 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage cassette / roue libre</span><span class="font-semibold text-stone-900">15 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un câble</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur</span><span class="font-semibold text-stone-900">30 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine (passage interne)</span><span class="font-semibold text-stone-900">40 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement dérailleur (Av. ou Arr.)</span><span class="font-semibold text-stone-900">35 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier / graissage</span><span class="font-semibold text-stone-900">45 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédalier</span><span class="font-semibold text-stone-900">30 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patte de dérailleur</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Dégauchissage patte de dérailleur</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement chaîne</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter VTT</span><span class="font-semibold text-stone-900">35 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter route</span><span class="font-semibold text-stone-900">50 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédales</span><span class="font-semibold text-stone-900">10 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Nettoyage transmission rapide</span><span class="font-semibold text-stone-900">15 €</span></div>
+        </div>
+      </div>
+    
+      <!-- 5. FREINAGE -->
+      <div>
+        <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+          🛑 Freinage
+        </h3>
+        <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-stone-600">
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine de frein</span><span class="font-semibold text-stone-900">25 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine (passage interne)</span><span class="font-semibold text-stone-900">35 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins V-brake / route (paire)</span><span class="font-semibold text-stone-900">15 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à patins</span><span class="font-semibold text-stone-900">15 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'étrier de frein à patin</span><span class="font-semibold text-stone-900">25 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Purge d'un frein hydraulique</span><span class="font-semibold text-stone-900">35 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'une durite (passage interne)</span><span class="font-semibold text-stone-900">50 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement plaquettes (la paire)</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement disque + réglage</span><span class="font-semibold text-stone-900">25 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à disque</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement frein hydraulique complet</span><span class="font-semibold text-stone-900">50 €</span></div>
+        </div>
+      </div>
+    
+      <!-- 6. DIRECTION -->
+      <div>
+        <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+          🧭 Direction
+        </h3>
+        <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-stone-600">
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu de direction</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement jeu de direction</span><span class="font-semibold text-stone-900">40 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Pose guidoline</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement potence</span><span class="font-semibold text-stone-900">20 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre</span><span class="font-semibold text-stone-900">25 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre route (guidoline incluse)</span><span class="font-semibold text-stone-900">50 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement poignées</span><span class="font-semibold text-stone-900">10 €</span></div>
+        </div>
+      </div>
+    
+      <!-- 7. DIVERS & MONTAGES -->
+      <div>
+        <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+          📦 Divers & Montages
+        </h3>
+        <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-stone-600">
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage petit accessoire</span><span class="font-semibold text-stone-900">8 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Pose porte-bagages</span><span class="font-semibold text-stone-900">35 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Pose garde-boue</span><span class="font-semibold text-stone-900">35 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo simple</span><span class="font-semibold text-stone-900">70 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet patin</span><span class="font-semibold text-stone-900">200 €</span></div>
+          <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet hydraulique</span><span class="font-semibold text-stone-900">300 €</span></div>
+        </div>
+      </div>
+    
+      <p class="text-[10px] text-stone-400 italic text-center pt-2">* Les tarifs s'entendent hors coût des pièces détachées (sauf mention spécifique).</p>
+    </div>
         `;
 
         const contentInfos = `
@@ -305,12 +353,24 @@
                 </div>
                 <div>
                     <label class="block font-semibold text-stone-700 mb-1">Choix du forfait ou prestation</label>
-                    <select name="prestation" id="prestation" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
-                        <option value="">-- Sélectionnez une prestation --</option>
-                        <option value="Révision Sécurité (49 €)">Révision Sécurité (49 €)</option>
-                        <option value="Révision Intégrale (89 €)">Révision Intégrale (89 €)</option>
-                        <option value="A La Carte">A La Carte</option>
-                        <option value="Crevaison Express">Crevaison Express</option>
+                   <select id="service-select" name="service" required class="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-xs text-stone-800 focus:ring-2 focus:ring-rougeBizikleta focus:outline-none">
+                      <option value="" disabled selected>-- Choisissez votre prestation --</option>
+                      
+                      <optgroup label="🛠️ Forfaits Révision">
+                        <option value="securite">Forfait Révision SÉCURITÉ (50 €)</option>
+                        <option value="integrale">Forfait Révision INTÉGRALE (90 €)</option>
+                        <option value="performance">Forfait Révision PERFORMANCE (130 €)</option>
+                      </optgroup>
+                    
+                      <optgroup label="⚡ Dépannage Urgent">
+                        <option value="crevaison-express-classique">Crevaison Express - Roue classique (25 €)</option>
+                        <option value="crevaison-express-moteur">Crevaison Express - Roue moteur / Moyeu (40 €)</option>
+                      </optgroup>
+                    
+                      <optgroup label="⚙️ À la Carte & Autres">
+                        <option value="a-la-carte">Réparation à la carte (Dérailleur, Freins, Montage...)</option>
+                        <option value="plusieurs-velos">Plusieurs vélos / Demande spécifique</option>
+                      </optgroup>
                     </select>
                 </div>
                 <div>
