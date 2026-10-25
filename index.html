@@ -87,10 +87,10 @@
         </div>
     </footer>
 
-    <!-- Fenêtre Modale -->
+    <!-- Fenêtre Modale Unique -->
     <div id="modal" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10">
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div id="modal-content">
@@ -99,7 +99,7 @@
         </div>
     </div>
 
-    <!-- Script de gestion -->
+    <!-- Script de gestion des modales et formulaires -->
     <script>
         const contentTarifs = `
             <h2 class="text-2xl font-bold font-basque text-stone-900 mb-6 text-center">Tarifs & Prestations</h2>
@@ -187,7 +187,7 @@
                     <ul class="space-y-2 text-xs">
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine de frein</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
-                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine de frein passage interne</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine (passage interne)</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins V-brake / route (la paire)</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à patins</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
                         <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'étrier de frein à patin</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
@@ -230,52 +230,72 @@
             </div>
         `;
 
-        const contentInfos = `
-            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-6 text-center">À Propos de Bizikleta</h2>
-            <div class="space-y-8 text-left text-sm text-stone-700 max-h-[70vh] overflow-y-auto pr-3">
-                
-                <div class="space-y-3">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
-                        <i class="fa-solid fa-list-check mr-2"></i>Comment ça marche ?
-                    </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center pt-2">
-                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-                            <span class="text-rougeBizikleta font-bold text-lg">1.</span>
-                            <p class="font-semibold text-xs text-stone-900 mt-1">Réservation</p>
-                            <p class="text-[11px] text-stone-500 mt-1">Sélectionnez la prestation et décrivez votre problème.</p>
-                        </div>
-                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-                            <span class="text-rougeBizikleta font-bold text-lg">2.</span>
-                            <p class="font-semibold text-xs text-stone-900 mt-1">Rendez-vous</p>
-                            <p class="text-[11px] text-stone-500 mt-1">Je me déplace à votre domicile ou lieu de travail.</p>
-                        </div>
-                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-                            <span class="text-rougeBizikleta font-bold text-lg">3.</span>
-                            <p class="font-semibold text-xs text-stone-900 mt-1">Repartez !</p>
-                            <p class="text-[11px] text-stone-500 mt-1">Votre vélo est réparé et prêt pour la route.</p>
-                        </div>
-                    </div>
+        const contentReservation = `
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-4 text-center">Réservation à Grenoble</h2>
+            <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-4 text-left text-sm max-h-[70vh] overflow-y-auto pr-2">
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Type de vélo *</label>
+                    <select name="velo" id="velo" class="w-full p-2.5 border rounded-xl bg-white text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                        <option value="">-- Sélectionnez votre vélo --</option>
+                        <option value="Vélo de ville / VTC">Vélo de ville / VTC</option>
+                        <option value="Vélo électrique (VAE)">Vélo électrique (VAE)</option>
+                        <option value="VTT / Route">VTT / Route</option>
+                        <option value="Vélo Cargo / Longtail">Vélo Cargo / Longtail</option>
+                    </select>
                 </div>
-
-                <div class="space-y-2">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
-                        <i class="fa-solid fa-location-dot mr-2"></i>Zone d'intervention
-                    </h3>
-                    <p class="text-xs text-stone-600 leading-relaxed">
-                        Intervention rapide à <strong>Grenoble</strong> et ses communes environnantes (Échirolles, Saint-Martin-d'Hères, Fontaine, Meylan, La Tronche, etc.). Intervention 7j/7, de 8h à 19h.
-                    </p>
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Prestation souhaitée *</label>
+                    <select name="prestation" id="prestation" class="w-full p-2.5 border rounded-xl bg-white text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                        <option value="">-- Sélectionnez une prestation --</option>
+                        <optgroup label="🛠️ Forfaits Révision">
+                            <option value="Forfait Révision SECURITE (50 €)">Forfait Révision SECURITE (50 €)</option>
+                            <option value="Forfait Révision INTEGRALE (90 €)">Forfait Révision INTEGRALE (90 €)</option>
+                            <option value="Forfait Révision PERFORMANCE (130 €)">Forfait Révision PERFORMANCE (130 €)</option>
+                        </optgroup>
+                        <optgroup label="⚡ Dépannage">
+                            <option value="Crevaison Express - Roue classique (25 €)">Crevaison Express - Roue classique (25 €)</option>
+                            <option value="Crevaison Express - Roue moteur (40 €)">Crevaison Express - Roue moteur (40 €)</option>
+                        </optgroup>
+                        <optgroup label="⚙️ Autre">
+                            <option value="Réparation à la carte">Réparation à la carte</option>
+                            <option value="Plusieurs vélos / Entreprise">Plusieurs vélos / Entreprise</option>
+                        </optgroup>
+                    </select>
                 </div>
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Description du problème</label>
+                    <textarea name="description" id="description" rows="2" placeholder="Décrivez la panne, le bruit ou le besoin..." class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta"></textarea>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" name="nom" id="nom" placeholder="Votre nom *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="tel" name="telephone" id="telephone" placeholder="Téléphone *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="code_postal" id="code_postal" placeholder="Code postal *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="adresse" id="adresse" placeholder="Adresse d'intervention *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                </div>
+                <div>
+                  <label for="photo" class="block font-medium mb-1 text-xs text-stone-600">Photo du problème (optionnel, max 4 Mo) :</label>
+                  <input 
+                    type="file" 
+                    id="photo" 
+                    accept="image/*" 
+                    class="w-full p-2 border rounded-xl text-xs bg-stone-50"
+                  >
+                </div>
+                <button type="submit" id="submit-btn" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md">
+                    Envoyer ma demande
+                </button>
+            </form>
+        `;
 
-                <div class="space-y-3">
-                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
-                        <i class="fa-solid fa-star mr-2"></i>Avis Clients
-                    </h3>
-                    <div class="space-y-2 text-xs">
-                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-100 space-y-1">
-                            <div class="flex text-amber-400 text-[10px]">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                            </div>
-                            <p class="italic text-stone-700">« Intervention ultra rapide chez moi à Grenoble pour une crevaison et un réglage de dérailleur. Service impeccable ! »</p>
-                            <p class="font-semibold text-stone-900 text-[11px]">— Thomas G.</p>
-                        </div>
-                        <div class="p-3 bg-stone-50 rounded
+        function openModal(type) {
+            const modal = document.getElementById('modal');
+            const container = document.getElementById('modal-content');
+            
+            if (type === 'tarifs') {
+                container.innerHTML = contentTarifs;
+            } else if (type === 'reservation') {
+                container.innerHTML = contentReservation;
+            }
+            
+            modal.classList.remove('hidden');
+        }
