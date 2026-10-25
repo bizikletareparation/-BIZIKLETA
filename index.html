@@ -3,409 +3,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bizikleta | Atelier mobile de réparation de vélos à Grenoble</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Bizikleta | Atelier de Réparation de Vélos à Grenoble</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        rougeBizikleta: '#E63946',
-                        sombreBizikleta: '#1D3557',
-                        cremeBizikleta: '#F8F9FA'
+                        beige: '#F5F2EB',
+                        rougeBizikleta: '#D32F2F',
+                    },
+                    fontFamily: {
+                        basque: ['"Playfair Display"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-cremeBizikleta text-stone-800 antialiased font-sans">
+<body class="bg-beige text-stone-800 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-rougeBizikleta selection:text-white">
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl font-black tracking-tight text-sombreBizikleta">BIZIKLETA</span>
-                <span class="text-xs bg-rougeBizikleta text-white px-2 py-0.5 rounded-full font-semibold">Grenoble</span>
-            </div>
-            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-                <a href="#services" class="hover:text-rougeBizikleta transition">Services & Tarifs</a>
-                <a href="#b2b" class="hover:text-rougeBizikleta transition">Entreprises (B2B)</a>
-                <a href="#contact" class="hover:text-rougeBizikleta transition">Contact</a>
-                <a href="infos.html" class="hover:text-rougeBizikleta transition">Infos légales</a>
-            </nav>
-            <div>
-                <a href="#contact" class="bg-rougeBizikleta text-white px-4 py-2 rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition shadow-sm">
-                    Réserver un créneau
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="relative bg-sombreBizikleta text-white py-20 lg:py-28 overflow-hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-2xl space-y-6">
-                <span class="bg-rougeBizikleta text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Atelier Mobile à Domicile & sur Site</span>
-                <h1 class="text-4xl sm:text-5xl font-black tracking-tight leading-tight">
-                    Votre vélo réparé <span class="text-rougeBizikleta">là où vous êtes</span> à Grenoble.
-                </h1>
-                <p class="text-stone-300 text-sm sm:text-base leading-relaxed">
-                    Plus besoin de porter votre vélo en atelier. Bizikleta se déplace chez vous, sur votre lieu de travail ou en entreprise dans toute l'agglomération grenobloise.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="#contact" class="bg-rougeBizikleta text-white text-center px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition shadow-lg">
-                        Prendre rendez-vous
-                    </a>
-                    <button onclick="openModal('tarifs-modal')" class="bg-white/10 hover:bg-white/25 text-white border border-white/20 text-center px-6 py-3 rounded-lg font-bold transition">
-                        Voir tous les tarifs & prestations
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION SERVICES RAPIDES / HIGHLIGHTS -->
-    <section id="services" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-xl mx-auto space-y-2 mb-12">
-            <h2 class="text-2xl sm:text-3xl font-black text-sombreBizikleta">Nos Formules Essentielles</h2>
-            <p class="text-xs sm:text-sm text-stone-500">Des forfaits clairs et adaptés à l'état de votre vélo.</p>
+    <!-- Section Centrale -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 space-y-12 text-center max-w-4xl mx-auto">
+        
+        <!-- Titre Principal -->
+        <div class="space-y-2">
+            <h1 class="text-5xl sm:text-7xl font-black font-basque text-rougeBizikleta tracking-wide uppercase drop-shadow-sm">
+                Bizikleta
+            </h1>
+            <p class="text-xs sm:text-sm uppercase tracking-widest text-stone-600 font-semibold">
+                Atelier de réparation de vélos à domicile • Grenoble
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Sécurité -->
-            <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold text-rougeBizikleta uppercase tracking-wider">Essentiel</span>
-                    <h3 class="text-xl font-bold text-stone-900 mt-1">Révision SÉCURITÉ</h3>
-                    <p class="text-xs text-stone-500 mt-3">Contrôle, serrage & réglage (freins, dérailleur, direction). Idéal pour un check-up régulier.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
-                    <span class="text-2xl font-black text-sombreBizikleta">50 €</span>
-                    <a href="#contact" class="text-xs font-bold text-rougeBizikleta hover:underline">Réserver →</a>
-                </div>
-            </div>
-
-            <!-- Intégrale -->
-            <div class="bg-white p-6 rounded-2xl border-2 border-rougeBizikleta shadow-md flex flex-col justify-between relative">
-                <span class="absolute -top-3 right-6 bg-rougeBizikleta text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Le plus populaire</span>
-                <div>
-                    <span class="text-xs font-bold text-rougeBizikleta uppercase tracking-wider">Complet</span>
-                    <h3 class="text-xl font-bold text-stone-900 mt-1">Révision INTÉGRALE</h3>
-                    <p class="text-xs text-stone-500 mt-3">SÉCURITÉ + changement pièces d'usure (cassette, chaîne, plaquettes/patins) + moyeu roue.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
-                    <span class="text-2xl font-black text-sombreBizikleta">90 €</span>
-                    <a href="#contact" class="text-xs font-bold text-rougeBizikleta hover:underline">Réserver →</a>
-                </div>
-            </div>
-
-            <!-- Performance -->
-            <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold text-rougeBizikleta uppercase tracking-wider">Expert</span>
-                    <h3 class="text-xl font-bold text-stone-900 mt-1">Révision PERFORMANCE</h3>
-                    <p class="text-xs text-stone-500 mt-3">INTÉGRALE + câbles & gaines (dérailleur & freins) / Purges hydrauliques incluses.</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
-                    <span class="text-2xl font-black text-sombreBizikleta">130 €</span>
-                    <a href="#contact" class="text-xs font-bold text-rougeBizikleta hover:underline">Réserver →</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mt-8">
-            <button onclick="openModal('tarifs-modal')" class="text-xs font-bold text-sombreBizikleta hover:text-rougeBizikleta underline transition">
-                Consulter la grille complète des tarifs (Crevaison express, à la carte, montages...) →
+        <!-- Liens principaux : Tarifs, En savoir plus & Réservation -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 w-full">
+            <button onclick="openModal('tarifs')" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
+                Tarifs
             </button>
+             <span class="hidden sm:inline text-stone-400 font-light">•</span>
+            <button onclick="openModal('reservation')" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
+                Réservation
+            </button>
+             <span class="hidden sm:inline text-stone-400 font-light">•</span>
+            
+            <!-- Nouveau lien direct vers la page web dédiée -->
+            <a href="infos.html" class="text-xl sm:text-2xl font-basque font-bold text-stone-900 hover:text-rougeBizikleta transition tracking-wide underline underline-offset-8 decoration-2">
+                En savoir plus
+            </a>
+            
         </div>
-    </section>
 
-    <!-- SECTION B2B (ENTREPRISES) -->
-    <section id="b2b" class="bg-stone-100 py-16 border-y border-stone-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-4">
-                    <span class="text-xs font-bold text-rougeBizikleta uppercase tracking-wider">Offre Entreprise & RSE</span>
-                    <h2 class="text-2xl sm:text-3xl font-black text-sombreBizikleta">Installez l'atelier Bizikleta au cœur de votre entreprise</h2>
-                    <p class="text-xs sm:text-sm text-stone-600 leading-relaxed">
-                        Encouragez la mobilité douce (vélotaf) de vos salariés. Nous venons directement sur votre parking ou dans votre cour une à deux fois par mois pour entretenir et réparer les vélos de vos équipes pendant leurs horaires de travail.
-                    </p>
-                    <ul class="space-y-2 text-xs text-stone-700 font-medium pt-2">
-                        <li class="flex items-center gap-2">✅ Clé en main : zéro contrainte logistique pour vos RH.</li>
-                        <li class="flex items-center gap-2">✅ Valorisation de votre politique QVT et Plan de Mobilité.</li>
-                        <li class="flex items-center gap-2">✅ Formules demi-journée ou journée d'intervention sur site.</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm space-y-4">
-                    <h3 class="font-bold text-stone-900 text-sm">Vous êtes RH, RSE ou Gestionnaire de site ?</h3>
-                    <p class="text-xs text-stone-500">Contactez-nous pour recevoir notre plaquette B2B et planifier une intervention test à Grenoble (Presqu'île, Eybens, Meylan, etc.).</p>
-                    <a href="#contact" class="block text-center bg-sombreBizikleta text-white py-3 rounded-lg text-xs font-bold hover:bg-stone-800 transition">
-                        Demander un devis B2B
-                    </a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-stone-300 py-8 px-4 text-stone-700 text-xs sm:text-sm">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <p class="font-bold text-stone-900">Grenoble & Alentours</p>
+            </div>
+            
+            <div class="space-y-2 text-center">
+                <p>
+                    <a href="tel:0614753647" class="hover:text-rougeBizikleta transition font-semibold">06 14 75 36 47</a> 
+                    <span class="mx-2">•</span> 
+                    <a href="mailto:bizikleta.reparation@gmail.com" class="hover:text-rougeBizikleta transition">bizikleta.reparation@gmail.com</a>
+                </p>
+                <div class="flex items-center justify-center gap-4 pt-1 text-lg">
+                    <a href="#" class="hover:text-rougeBizikleta transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-rougeBizikleta transition"><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- SECTION CONTACT & RÉSERVATION -->
-    <section id="contact" class="py-16 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center space-y-2 mb-10">
-            <h2 class="text-2xl sm:text-3xl font-black text-sombreBizikleta">Prendre Rendez-vous</h2>
-            <p class="text-xs sm:text-sm text-stone-500">Remplissez le formulaire ci-dessous ou contactez-nous directement.</p>
-        </div>
-
-        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-stone-200 shadow-sm">
-            <form action="#" method="POST" class="space-y-4">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-stone-700 mb-1">Votre Nom *</label>
-                        <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-xs text-stone-800 focus:ring-2 focus:ring-rougeBizikleta focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-stone-700 mb-1">Téléphone *</label>
-                        <input type="tel" required class="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-xs text-stone-800 focus:ring-2 focus:ring-rougeBizikleta focus:outline-none">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-stone-700 mb-1">Email *</label>
-                    <input type="email" required class="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-xs text-stone-800 focus:ring-2 focus:ring-rougeBizikleta focus:outline-none">
-                </div>
-
-                <!-- SELECT DES PRESTATIONS MIS À JOUR -->
-                <div>
-                    <label for="service-select" class="block text-xs font-bold text-stone-700 uppercase tracking-wider mb-2">
-                        Sélectionnez la prestation souhaitée *
-                    </label>
-                    <select id="service-select" name="service" required class="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-xs text-stone-800 focus:ring-2 focus:ring-rougeBizikleta focus:outline-none">
-                        <option value="" disabled selected>-- Choisissez votre prestation --</option>
-                        
-                        <optgroup label="🛠️ Forfaits Révision">
-                            <option value="securite">Forfait Révision SÉCURITÉ (50 €)</option>
-                            <option value="integrale">Forfait Révision INTÉGRALE (90 €)</option>
-                            <option value="performance">Forfait Révision PERFORMANCE (130 €)</option>
-                        </optgroup>
-
-                        <optgroup label="⚡ Dépannage Urgent (Crevaison Express)">
-                            <option value="crevaison-express-classique">Crevaison Express - Roue classique (25 €)</option>
-                            <option value="crevaison-express-moteur">Crevaison Express - Roue moteur / Moyeu (40 €)</option>
-                        </optgroup>
-
-                        <optgroup label="⚙️ À la Carte & Autres">
-                            <option value="a-la-carte">Réparation à la carte (Dérailleur, Freins, Montage...)</option>
-                            <option value="plusieurs-velos">Plusieurs vélos / Demande spécifique</option>
-                        </optgroup>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-medium text-stone-600 mb-1">Précisions sur votre vélo ou votre besoin</label>
-                    <textarea rows="3" placeholder="Ex: Marque du vélo, lieu d'intervention souhaité à Grenoble, problème particulier..." class="w-full bg-stone-50 border border-stone-200 rounded-lg p-3 text-xs text-stone-800 focus:ring-2 focus:ring-rougeBizikleta focus:outline-none"></textarea>
-                </div>
-
-                <button type="submit" class="w-full bg-rougeBizikleta text-white font-bold py-3 rounded-lg text-xs uppercase tracking-wider hover:bg-red-700 transition shadow-sm">
-                    Envoyer ma demande
-                </button>
-            </form>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-sombreBizikleta text-white py-12 border-t border-stone-800 text-xs">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© 2026 Bizikleta – Atelier mobile de réparation de vélos à Grenoble. Tous droits réservés.</p>
-            <div class="flex space-x-6">
-                <a href="infos.html" class="hover:text-rougeBizikleta transition">Informations légales & Contact</a>
-                <a href="#contact" class="hover:text-rougeBizikleta transition">Prendre RDV</a>
+            <div class="text-center md:text-right">
+                <p class="font-bold text-stone-900">Lundi-Dimanche</p>
+                <p class="text-stone-600">8h-19h</p>
             </div>
         </div>
     </footer>
 
-    <!-- MODAL TARIFS COMPLETS -->
-    <div id="tarifs-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 relative max-h-[90vh] flex flex-col shadow-2xl">
-            <div class="flex items-center justify-between pb-4 border-b border-stone-200">
-                <h3 class="font-black text-sombreBizikleta text-base sm:text-lg">Grille Tarifaire Complète Bizikleta</h3>
-                <button onclick="closeModal('tarifs-modal')" class="text-stone-400 hover:text-stone-700 text-xl font-bold px-2">✕</button>
-            </div>
-
-            <!-- CONTENU DE LA MODALE DES TARIFS -->
-            <div class="space-y-6 overflow-y-auto pr-2 py-4 flex-grow text-xs">
-
-              <!-- 1. FORFAITS RÉVISION -->
-              <div>
-                <h4 class="font-bold text-stone-900 border-b-2 border-rougeBizikleta pb-1 uppercase tracking-wider">
-                  🛠️ Forfaits de Révision
-                </h4>
-                <div class="mt-3 space-y-3">
-                  <div class="flex justify-between items-start border-b border-stone-100 pb-2">
-                    <div>
-                      <p class="font-bold text-stone-900">Forfait Révision SÉCURITÉ</p>
-                      <p class="text-stone-500 text-[11px]">Contrôle, serrage & réglage (freins, dérailleur, direction).</p>
-                    </div>
-                    <span class="font-bold text-rougeBizikleta text-sm whitespace-nowrap ml-2">50 €</span>
-                  </div>
-
-                  <div class="flex justify-between items-start border-b border-stone-100 pb-2">
-                    <div>
-                      <p class="font-bold text-stone-900">Forfait Révision INTÉGRALE</p>
-                      <p class="text-stone-500 text-[11px]">SÉCURITÉ + changement pièces (cassette, chaîne, plaquettes/patins) + moyeu roue.</p>
-                    </div>
-                    <span class="font-bold text-rougeBizikleta text-sm whitespace-nowrap ml-2">90 €</span>
-                  </div>
-
-                  <div class="flex justify-between items-start pb-1">
-                    <div>
-                      <p class="font-bold text-stone-900">Forfait Révision PERFORMANCE</p>
-                      <p class="text-stone-500 text-[11px]">INTÉGRALE + câbles & gaines (dérailleur & freins) / Purges.</p>
-                    </div>
-                    <span class="font-bold text-rougeBizikleta text-sm whitespace-nowrap ml-2">130 €</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 2. CREVAISON EXPRESS -->
-              <div class="bg-red-50 p-3 rounded-lg border border-red-100">
-                <h4 class="font-bold text-stone-900 uppercase tracking-wider text-rougeBizikleta">
-                  ⚡ CREVAISON EXPRESS
-                </h4>
-                <div class="mt-2 space-y-1.5">
-                  <div class="flex justify-between items-center border-b border-red-100/60 pb-1">
-                    <span class="text-stone-700">Roue classique</span>
-                    <span class="font-bold text-stone-900">25 €</span>
-                  </div>
-                  <div class="flex justify-between items-center">
-                    <span class="text-stone-700">Roue moteur arrière / moyeu spécial</span>
-                    <span class="font-bold text-stone-900">40 €</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 3. ROUES ET PNEUMATIQUES -->
-              <div>
-                <h4 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-rougeBizikleta">
-                  🚲 Roues & Pneumatiques
-                </h4>
-                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-stone-600">
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison</span><span class="font-semibold text-stone-900">15 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison roue motorisée / moyeu spécial</span><span class="font-semibold text-stone-900">30 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage pneu tubeless (préventif + fond + valve)</span><span class="font-semibold text-stone-900">45 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Dévoilage simple</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un rayon</span><span class="font-semibold text-stone-900">35 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu moyeu (Av. ou Arr.)</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue avant</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue arrière</span><span class="font-semibold text-stone-900">25 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement de cercle / jante</span><span class="font-semibold text-stone-900">90 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un roulement</span><span class="font-semibold text-stone-900">30 €</span></div>
-                </div>
-              </div>
-
-              <!-- 4. TRANSMISSION -->
-              <div>
-                <h4 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-rougeBizikleta">
-                  ⚙️ Transmission
-                </h4>
-                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-stone-600">
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage dérailleur (Av. ou Arr.)</span><span class="font-semibold text-stone-900">15 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage cassette / roue libre</span><span class="font-semibold text-stone-900">15 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un câble</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur</span><span class="font-semibold text-stone-900">30 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine (passage interne)</span><span class="font-semibold text-stone-900">40 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement dérailleur (Av. ou Arr.)</span><span class="font-semibold text-stone-900">35 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier / graissage</span><span class="font-semibold text-stone-900">45 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédalier</span><span class="font-semibold text-stone-900">30 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patte de dérailleur</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Dégauchissage patte de dérailleur</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement chaîne</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter VTT</span><span class="font-semibold text-stone-900">35 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter route</span><span class="font-semibold text-stone-900">50 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédales</span><span class="font-semibold text-stone-900">10 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Nettoyage transmission rapide</span><span class="font-semibold text-stone-900">15 €</span></div>
-                </div>
-              </div>
-
-              <!-- 5. FREINAGE -->
-              <div>
-                <h4 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-rougeBizikleta">
-                  🛑 Freinage
-                </h4>
-                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-stone-600">
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine de frein</span><span class="font-semibold text-stone-900">25 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine (passage interne)</span><span class="font-semibold text-stone-900">35 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins V-brake / route (paire)</span><span class="font-semibold text-stone-900">15 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à patins</span><span class="font-semibold text-stone-900">15 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'étrier de frein à patin</span><span class="font-semibold text-stone-900">25 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Purge d'un frein hydraulique</span><span class="font-semibold text-stone-900">35 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'une durite (passage interne)</span><span class="font-semibold text-stone-900">50 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement plaquettes (la paire)</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement disque + réglage</span><span class="font-semibold text-stone-900">25 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à disque</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement frein hydraulique complet</span><span class="font-semibold text-stone-900">50 €</span></div>
-                </div>
-              </div>
-
-              <!-- 6. DIRECTION -->
-              <div>
-                <h4 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-rougeBizikleta">
-                  🧭 Direction
-                </h4>
-                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-stone-600">
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu de direction</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement jeu de direction</span><span class="font-semibold text-stone-900">40 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Pose guidoline</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement potence</span><span class="font-semibold text-stone-900">20 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre</span><span class="font-semibold text-stone-900">25 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre route (guidoline incluse)</span><span class="font-semibold text-stone-900">50 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement poignées</span><span class="font-semibold text-stone-900">10 €</span></div>
-                </div>
-              </div>
-
-              <!-- 7. DIVERS & MONTAGES -->
-              <div>
-                <h4 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-rougeBizikleta">
-                  📦 Divers & Montages
-                </h4>
-                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 text-stone-600">
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage petit accessoire</span><span class="font-semibold text-stone-900">8 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Pose porte-bagages</span><span class="font-semibold text-stone-900">35 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Pose garde-boue</span><span class="font-semibold text-stone-900">35 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo simple</span><span class="font-semibold text-stone-900">70 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet patin</span><span class="font-semibold text-stone-900">200 €</span></div>
-                  <div class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet hydraulique</span><span class="font-semibold text-stone-900">300 €</span></div>
-                </div>
-              </div>
-
-              <p class="text-[10px] text-stone-400 italic text-center pt-2">* Les tarifs s'entendent hors coût des pièces détachées (sauf mention spécifique).</p>
-            </div>
-
-            <div class="pt-4 border-t border-stone-200 text-center">
-                <button onclick="closeModal('tarifs-modal')" class="bg-sombreBizikleta text-white px-6 py-2 rounded-lg text-xs font-bold hover:bg-stone-800 transition">
-                    Fermer
-                </button>
+    <!-- Fenêtre Modale -->
+    <div id="modal" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Le contenu dynamique s'affichera ici -->
             </div>
         </div>
     </div>
 
-    <!-- SCRIPT JS POUR LES MODALES -->
+    <!-- Script de gestion -->
     <script>
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+        const contentTarifs = `
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-6 text-center">Tarifs & Prestations</h2>
+            <div class="space-y-6 text-left text-sm text-stone-700 max-h-[70vh] overflow-y-auto pr-3">
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Révision</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Forfait révision Niveau 1</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Forfait révision Niveau 2</span><span class="font-semibold text-rougeBizikleta">80 €</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Roues et pneumatiques</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison (chambre comprise)</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison roue arrière hollandais carter intégral</span><span class="font-semibold text-rougeBizikleta">36 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage d'un pneu tubeless (préventif + fond de jante + valve)</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison roue motorisée</span><span class="font-semibold text-rougeBizikleta">40 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Crevaison moyeu special</span><span class="font-semibold text-rougeBizikleta">sur devis</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Dévoilage simple</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un rayon</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu moyeu (Av. ou Arr.)</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue avant</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement roue arrière</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement de cercle / jante</span><span class="font-semibold text-rougeBizikleta">60 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un roulement</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Transmission</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage dérailleur avant ou arrière</span><span class="font-semibold text-rougeBizikleta">10 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage cassette / roue libre</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur (Av. ou Arr.)</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble + gaine dérailleur passage en interne</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement dérailleur avant ou arrière, câble et gaine inclus</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier / graissage</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement boîtier de pédalier avec rafraîchissement filet</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose insert manivelle (insert inclus)</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédalier</span><span class="font-semibold text-rougeBizikleta">28 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patte de dérailleur</span><span class="font-semibold text-rougeBizikleta">16 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Dégauchissage patte de dérailleur</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement chaîne</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un shifter route</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement pédales</span><span class="font-semibold text-rougeBizikleta">6 €</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Freinage</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine de frein</span><span class="font-semibold text-rougeBizikleta">22 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement câble et gaine de frein passage interne</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins V-brake / route (la paire)</span><span class="font-semibold text-rougeBizikleta">12 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement patins Magura HS11 HS33</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à patins</span><span class="font-semibold text-rougeBizikleta">12 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'étrier de frein à patin</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'une durite + purge</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'une durite passage en interne</span><span class="font-semibold text-rougeBizikleta">45 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement plaquettes (la paire)</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement disque + réglage</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage frein à disque</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement d'un frein hydraulique complet</span><span class="font-semibold text-rougeBizikleta">40 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Purge d'un frein hydraulique</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Direction</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu de direction</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement jeu de direction</span><span class="font-semibold text-rougeBizikleta">38 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose guidoline</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement potence</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre</span><span class="font-semibold text-rougeBizikleta">22 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre route (pose guidoline incluse)</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement poignées</span><span class="font-semibold text-rougeBizikleta">5 €</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Éclairage</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose phare avant ou arrière dynamo</span><span class="font-semibold text-rougeBizikleta">18 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Câblage complet éclairage avant et arrière (système dynamo)</span><span class="font-semibold text-rougeBizikleta">55 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement ampoule</span><span class="font-semibold text-rougeBizikleta">4 €</span></li>
+                    </ul>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Divers</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage minute petit accessoire</span><span class="font-semibold text-rougeBizikleta">8 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose porte-bagages</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose garde-boue</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose siège bébé</span><span class="font-semibold text-rougeBizikleta">17 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Révision fourche</span><span class="font-semibold text-rougeBizikleta">Sur devis</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo internet</span><span class="font-semibold text-rougeBizikleta">70 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet patin</span><span class="font-semibold text-rougeBizikleta">270 €</span></li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet hydraulique</span><span class="font-semibold text-rougeBizikleta">320 €</span></li>
+                        <li class="flex justify-between pb-1"><span>Nettoyage vélo</span><span class="font-semibold text-rougeBizikleta">30 €</span></li>
+                    </ul>
+                </div>
+            </div>
+        `;
+
+        const contentInfos = `
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-6 text-center">À Propos de Bizikleta</h2>
+            <div class="space-y-8 text-left text-sm text-stone-700 max-h-[70vh] overflow-y-auto pr-3">
+                
+                <!-- 1. Comment ça marche -->
+                <div class="space-y-3">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+                        <i class="fa-solid fa-list-check mr-2"></i>Comment ça marche ?
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center pt-2">
+                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
+                            <span class="text-rougeBizikleta font-bold text-lg">1.</span>
+                            <p class="font-semibold text-xs text-stone-900 mt-1">Réservation</p>
+                            <p class="text-[11px] text-stone-500 mt-1">Sélectionnez la prestation et décrivez votre problème.</p>
+                        </div>
+                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
+                            <span class="text-rougeBizikleta font-bold text-lg">2.</span>
+                            <p class="font-semibold text-xs text-stone-900 mt-1">Rendez-vous</p>
+                            <p class="text-[11px] text-stone-500 mt-1">Je me déplace à votre domicile ou lieu de travail.</p>
+                        </div>
+                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
+                            <span class="text-rougeBizikleta font-bold text-lg">3.</span>
+                            <p class="font-semibold text-xs text-stone-900 mt-1">Repartez !</p>
+                            <p class="text-[11px] text-stone-500 mt-1">Votre vélo est réparé et prêt pour la route.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Zone d'intervention -->
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+                        <i class="fa-solid fa-location-dot mr-2"></i>Zone d'intervention
+                    </h3>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        Intervention rapide à <strong>Grenoble</strong> et ses communes environnantes (Échirolles, Saint-Martin-d'Hères, Fontaine, Meylan, La Tronche, etc.). Intervention 7j/7, de 8h à 19h.
+                    </p>
+                </div>
+
+                <!-- 3. Avis clients -->
+                <div class="space-y-3">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+                        <i class="fa-solid fa-star mr-2"></i>Avis Clients
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-100 space-y-1">
+                            <div class="flex text-amber-400 text-[10px]">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="italic text-stone-700">« Intervention ultra rapide chez moi à Grenoble pour une crevaison et un réglage de dérailleur. Service impeccable ! »</p>
+                            <p class="font-semibold text-stone-900 text-[11px]">— Thomas G.</p>
+                        </div>
+                        <div class="p-3 bg-stone-50 rounded-xl border border-stone-100 space-y-1">
+                            <div class="flex text-amber-400 text-[10px]">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="italic text-stone-700">« Très pro et de super conseils pour mon vélo électrique. Je recommande vivement à 100%. »</p>
+                            <p class="font-semibold text-stone-900 text-[11px]">— Claire M.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. FAQ -->
+                <div class="space-y-3">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">
+                        <i class="fa-solid fa-circle-question mr-2"></i>Foire Aux Questions (FAQ)
+                    </h3>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <p class="font-bold text-stone-900">Faut-il prévoir un espace particulier pour l'intervention ?</p>
+                            <p class="text-stone-600 mt-0.5">Non, un simple espace dégagé sur le trottoir, dans votre cour, garage ou local à vélo suffit amplement.</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-stone-900">Quels types de vélos réparez-vous ?</p>
+                            <p class="text-stone-600 mt-0.5">Tous types : vélos de ville, VTC, VTT, vélos électriques (VAE), vélos cargos et vélos de course.</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-stone-900">Quels sont les moyens de paiement acceptés ?</p>
+                            <p class="text-stone-600 mt-0.5">Paiement par carte bancaire, espèces ou virement après l'intervention.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="openModal('reservation')" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md text-center block">
+                    Réserver ma réparation
+                </button>
+            </div>
+        `;
+
+        const contentReservation = `
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-4">Réservation à Grenoble</h2>
+            <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-4 text-left text-sm max-h-[70vh] overflow-y-auto pr-2">
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1">Type de vélo</label>
+                    <select name="velo" id="velo" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
+                        <option value="">-- Sélectionnez votre vélo --</option>
+                        <option value="Vélo de ville / VTC">Vélo de ville / VTC</option>
+                        <option value="Vélo électrique (VAE)">Vélo électrique (VAE)</option>
+                        <option value="VTT / Route">VTT / Route</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1">Choix du forfait ou prestation</label>
+                    <select name="prestation" id="prestation" class="w-full p-3 border rounded-xl bg-white focus:outline-none focus:border-rougeBizikleta" required>
+                        <option value="">-- Sélectionnez une prestation --</option>
+                        <option value="Révision Sécurité (49 €)">Révision Sécurité (49 €)</option>
+                        <option value="Révision Intégrale (89 €)">Révision Intégrale (89 €)</option>
+                        <option value="A La Carte">A La Carte</option>
+                        <option value="Crevaison Express">Crevaison Express</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1">Description du problème</label>
+                    <textarea name="description" id="description" rows="2" placeholder="Décrivez votre panne..." class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta"></textarea>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" name="nom" id="nom" placeholder="Votre nom" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="tel" name="telephone" id="telephone" placeholder="Votre téléphone" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="Code postal" id="Code postal" placeholder="Code postal" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="adresse" id="adresse" placeholder="Votre adresse" class="w-full p-3 border rounded-xl focus:outline-none focus:border-rougeBizikleta" required>
+                </div>
+                <!-- Champ pour la photo -->
+                <div class="mb-4">
+                  <label for="photo" class="block font-medium mb-1 text-xs text-stone-600">Photo du problème (optionnel, max 4 Mo) :</label>
+                  <input 
+                    type="file" 
+                    id="photo" 
+                    accept="image/*" 
+                    class="w-full p-2 border rounded-xl text-xs bg-stone-50"
+                  >
+                </div>
+                <button type="submit" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md">
+                    Envoyer ma demande
+                </button>
+            </form>
+        `;
+
+        function openModal(type) {
+            const modal = document.getElementById('modal');
+            const container = document.getElementById('modal-content');
+            if (type === 'tarifs') {
+                container.innerHTML = contentTarifs;
+            } else if (type === 'infos') {
+                container.innerHTML = contentInfos;
+            } else {
+                container.innerHTML = contentReservation;
+            }
+            modal.classList.remove('hidden');
         }
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-            document.body.style.overflow = 'auto';
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
         }
-        // Fermer en cliquant en dehors de la modale
-        window.onclick = function(event) {
-            const modal = document.getElementById('tarifs-modal');
-            if (event.target === modal) {
-                closeModal('tarifs-modal');
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = (error) => reject(error);
+            });
+        }
+
+        async function envoyerReservation(event) {
+            event.preventDefault();
+
+            const nom = document.getElementById('nom').value;
+            const telephone = document.getElementById('telephone').value;
+            const adresse = document.getElementById('adresse').value;
+            const prestation = document.getElementById('prestation').value;
+            const velo = document.getElementById('velo').value;
+            const description = document.getElementById('description').value;
+
+            const photoInput = document.getElementById('photo');
+            let photoData = null;
+
+            if (photoInput && photoInput.files.length > 0) {
+                const file = photoInput.files[0];
+                
+                if (file.size > 4 * 1024 * 1024) {
+                    alert("La photo est trop lourde (maximum 4 Mo). Veuillez en choisir une plus légère.");
+                    return;
+                }
+
+                try {
+                    const base64Content = await fileToBase64(file);
+                    photoData = {
+                        filename: file.name,
+                        content: base64Content
+                    };
+                } catch (err) {
+                    console.error("Erreur lors de la lecture du fichier :", err);
+                }
+            }
+
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nom,
+                        telephone,
+                        adresse,
+                        prestation,
+                        velo,
+                        description,
+                        photo: photoData
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    const container = document.getElementById('modal-content');
+                    container.innerHTML = `
+                        <div class="text-center py-8 space-y-4">
+                            <div class="text-5xl text-green-600"><i class="fa-solid fa-circle-check"></i></div>
+                            <h2 class="text-2xl font-bold font-basque text-stone-900">Demande de rendez-vous envoyée !</h2>
+                            <p class="text-stone-600 text-sm">Merci ! Votre message a bien été transmis à l'atelier. Nous vous recontacterons très rapidement.</p>
+                            <button onclick="closeModal()" class="bg-stone-900 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-rougeBizikleta transition">
+                                Fermer
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    alert("Une erreur est survenue : " + (result.error || "Erreur inconnue"));
+                }
+            } catch (error) {
+                console.error("Erreur réseau :", error);
+                alert("Erreur de connexion. Vérifiez votre réseau.");
             }
         }
+                // Détecter si un paramètre d'URL demande d'ouvrir une modale au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const modalParam = urlParams.get('modal');
+            if (modalParam) {
+                openModal(modalParam);
+            }
+        });
     </script>
 </body>
 </html>
