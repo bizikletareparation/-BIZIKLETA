@@ -37,15 +37,15 @@
                 Bizikleta
             </a>
             
-            <!-- Uniquement Tarifs et Réservation -->
+            <!-- Tarifs et Réservation (Ouvrent les modales) -->
             <nav class="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm font-semibold">
-                <a href="index.html?modal=tarifs" class="text-stone-700 hover:text-rougeBizikleta transition">
+                <button onclick="openModal('modal-tarifs')" class="text-stone-700 hover:text-rougeBizikleta transition cursor-pointer">
                     Tarifs
-                </a>
+                </button>
                 <span class="text-stone-400 font-light">•</span>
-                <a href="index.html?modal=reservation" class="text-stone-700 hover:text-rougeBizikleta transition">
+                <button onclick="openModal('modal-reservation')" class="text-stone-700 hover:text-rougeBizikleta transition cursor-pointer">
                     Réservation
-                </a>
+                </button>
             </nav>
         </div>
     </header>
@@ -168,9 +168,99 @@
         </div>
     </footer>
 
-</body>
-</html>
-    </footer>
+    <!-- MODALE TARIFS (Intégrée) -->
+    <div id="modal-tarifs" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-4">
+            <button onclick="closeModal('modal-tarifs')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10 cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-4 text-center">Tarifs & Prestations</h2>
+            
+            <div class="space-y-6 text-left text-sm text-stone-700 max-h-[65vh] overflow-y-auto pr-3">
+                <!-- RÉVISIONS -->
+                <div class="space-y-2">
+                    <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Révision</h3>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex justify-between border-b border-stone-100 pb-1">
+                            <div><span class="font-bold text-stone-900">Forfait révision SÉCURITÉ</span><p class="text-[10px] text-stone-500">Contrôle, Serrage & Réglage (freins, dérailleur, direction)</p></div>
+                            <span class="font-semibold text-rougeBizikleta">50 €</span>
+                        </li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1">
+                            <div><span class="font-bold text-stone-900">Forfait révision INTÉGRALE</span><p class="text-[10px] text-stone-500">SÉCURITÉ + Changement pièce (cassette, chaîne, plaquettes/patins) + Moyeu roue</p></div>
+                            <span class="font-semibold text-rougeBizikleta">90 €</span>
+                        </li>
+                        <li class="flex justify-between border-b border-stone-100 pb-1">
+                            <div><span class="font-bold text-stone-900">Forfait révision PERFORMANCE</span><p class="text-[10px] text-stone-500">INTÉGRALE + câble et gaine (dérailleur & freins) / Purges</p></div>
+                            <span class="font-semibold text-rougeBizikleta">130 €</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- MODALE RÉSERVATION (Intégrée) -->
+    <div id="modal-reservation" class="fixed inset-0 bg-stone-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative space-y-4">
+            <button onclick="closeModal('modal-reservation')" class="absolute top-4 right-4 text-stone-400 hover:text-stone-800 text-xl font-bold z-10 cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h2 class="text-2xl font-bold font-basque text-stone-900 mb-2 text-center">Réservation à Grenoble</h2>
+            
+            <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-3 text-left text-sm max-h-[65vh] overflow-y-auto pr-2">
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Type de vélo *</label>
+                    <select name="velo" id="velo" class="w-full p-2.5 border rounded-xl bg-white text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                        <option value="">-- Sélectionnez votre vélo --</option>
+                        <option value="Vélo de ville / VTC">Vélo de ville / VTC</option>
+                        <option value="Vélo électrique (VAE)">Vélo électrique (VAE)</option>
+                        <option value="VTT / Route">VTT / Route</option>
+                        <option value="Vélo Cargo / Longtail">Vélo Cargo / Longtail</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Prestation souhaitée *</label>
+                    <select name="prestation" id="prestation" class="w-full p-2.5 border rounded-xl bg-white text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                        <option value="">-- Sélectionnez une prestation --</option>
+                        <optgroup label="🛠️ Forfaits Révision">
+                            <option value="Forfait Révision SECURITE (50 €)">Forfait Révision SÉCURITÉ (50 €)</option>
+                            <option value="Forfait Révision INTEGRALE (90 €)">Forfait Révision INTÉGRALE (90 €)</option>
+                            <option value="Forfait Révision PERFORMANCE (130 €)">Forfait Révision PERFORMANCE (130 €)</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Description du problème</label>
+                    <textarea name="description" id="description" rows="2" placeholder="Décrivez la panne ou le besoin..." class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta"></textarea>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" name="nom" id="nom" placeholder="Votre nom *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="tel" name="telephone" id="telephone" placeholder="Téléphone *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="code_postal" id="code_postal" placeholder="Code postal *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                    <input type="text" name="adresse" id="adresse" placeholder="Adresse d'intervention *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                </div>
+                <button type="submit" id="submit-btn" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md cursor-pointer">
+                    Envoyer ma demande
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script de gestion des modales -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        async function envoyerReservation(event) {
+            event.preventDefault();
+            alert("Demande enregistrée !");
+            closeModal('modal-reservation');
+        }
+    </script>
 </body>
 </html>
