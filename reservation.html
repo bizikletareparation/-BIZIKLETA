@@ -126,7 +126,6 @@
                     </div>
                 </div>
 
-                <!-- Type de prestation rajouté -->
                 <div class="space-y-1">
                     <label class="block text-xs font-bold text-stone-700 uppercase">Type de prestation *</label>
                     <div class="relative flex items-center">
@@ -143,6 +142,15 @@
                 <div class="space-y-1">
                     <label class="block text-xs font-bold text-stone-700 uppercase">Décrivez votre problème ou besoin *</label>
                     <textarea rows="4" required class="w-full bg-stone-50 border border-stone-200 rounded-xl p-3 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Ex: Révision sécurité, crevaison roue arrière, bruit suspect dans le pédalier..."></textarea>
+                </div>
+
+                <!-- Ajout du champ Photo -->
+                <div class="space-y-1">
+                    <label class="block text-xs font-bold text-stone-700 uppercase">Ajouter une photo du vélo ou de la panne (optionnel)</label>
+                    <div class="relative flex items-center">
+                        <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-camera"></i></span>
+                        <input type="file" accept="image/*" class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-1.5 text-stone-600 focus:outline-none focus:border-rougeBizikleta text-xs file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-stone-200 file:text-stone-700 hover:file:bg-stone-300">
+                    </div>
                 </div>
 
                 <button type="submit" class="w-full bg-rougeBizikleta text-white font-bold py-3 px-4 rounded-xl hover:bg-red-700 transition text-xs uppercase tracking-wider shadow-sm">
