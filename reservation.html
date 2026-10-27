@@ -52,16 +52,16 @@
             <p class="text-xs text-stone-600 uppercase tracking-widest font-semibold">Prenez rendez-vous à Grenoble & alentours</p>
         </div>
 
-        <!-- Formulaire -->
+        <!-- Formulaire avec script de validation -->
         <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-stone-200">
-            <form id="reservationForm" class="space-y-4 text-sm" onsubmit="handleFormSubmit(event)">
+            <form id="reservationForm" class="space-y-4 text-sm" onsubmit="return validateForm(event)">
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="space-y-1">
                         <label class="block text-xs font-bold text-stone-700 uppercase">Prénom & Nom *</label>
                         <div class="relative flex items-center">
                             <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-user"></i></span>
-                            <input type="text" id="nom" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Jean Dupont">
+                            <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Jean Dupont">
                         </div>
                     </div>
                     <div class="space-y-1">
@@ -78,7 +78,7 @@
                     <label class="block text-xs font-bold text-stone-700 uppercase">Adresse email *</label>
                     <div class="relative flex items-center">
                         <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-envelope"></i></span>
-                        <input type="email" id="email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="jean.dupont@exemple.fr">
+                        <input type="email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="jean.dupont@exemple.fr">
                     </div>
                 </div>
 
@@ -87,7 +87,7 @@
                         <label class="block text-xs font-bold text-stone-700 uppercase">Adresse (Rue & Ville) *</label>
                         <div class="relative flex items-center">
                             <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-location-dot"></i></span>
-                            <input type="text" id="adresse" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="3 Cours Berriat, Grenoble">
+                            <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="3 Cours Berriat, Grenoble">
                         </div>
                     </div>
                     <div class="space-y-1">
@@ -105,7 +105,7 @@
                         <label class="block text-xs font-bold text-stone-700 uppercase">Type de vélo *</label>
                         <div class="relative flex items-center">
                             <span class="absolute left-3 text-rougeBizikleta text-xs z-10"><i class="fa-solid fa-bicycle"></i></span>
-                            <select id="typeVelo" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs appearance-none">
+                            <select required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs appearance-none">
                                 <option value="">Choisissez le type de vélo</option>
                                 <option value="Ville / VTC">Ville / VTC</option>
                                 <option value="VTT">VTT</option>
@@ -118,7 +118,7 @@
                         <label class="block text-xs font-bold text-stone-700 uppercase">Option Conciergerie ?</label>
                         <div class="relative flex items-center">
                             <span class="absolute left-3 text-rougeBizikleta text-xs z-10"><i class="fa-solid fa-house-chimney"></i></span>
-                            <select id="conciergerie" class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs appearance-none">
+                            <select class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs appearance-none">
                                 <option value="Non">Non (Intervention classique)</option>
                                 <option value="Oui (+10€)">Oui (+10 € : Récupération & retour atelier)</option>
                             </select>
@@ -126,142 +126,21 @@
                     </div>
                 </div>
 
-                <div class="space-y-1">
+                <!-- Type de prestation avec des pastilles cliquables -->
+                <div class="space-y-2">
                     <label class="block text-xs font-bold text-stone-700 uppercase">Type de prestation *</label>
-                    <div class="relative flex items-center">
-                        <span class="absolute left-3 text-rougeBizikleta text-xs z-10"><i class="fa-solid fa-wrench"></i></span>
-                        <select id="prestation" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs appearance-none">
-                            <option value="">Choisissez une prestation</option>
-                            <option value="Forfait revisions">Forfait révisions</option>
-                            <option value="Depannage express">Dépannage express</option>
-                            <option value="A la carte">À la carte</option>
-                        </select>
-                    </div>
-                </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        
+                        <!-- Option 1 : Forfait révisions -->
+                        <label class="flex items-center gap-2.5 p-3 bg-stone-50 border border-stone-200 rounded-xl cursor-pointer hover:border-rougeBizikleta transition text-xs font-medium text-stone-800 [&:has(input:checked)]:border-rougeBizikleta [&:has(input:checked)]:bg-red-50/20 [&:has(input:checked)]:text-rougeBizikleta">
+                            <input type="radio" name="prestation" value="Forfait revisions" required class="accent-rougeBizikleta">
+                            <span class="w-6 h-6 rounded-full bg-stone-200 flex items-center justify-center text-stone-700 text-xs shrink-0">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </span>
+                            <span>Forfait révisions</span>
+                        </label>
 
-                <div class="space-y-1">
-                    <label class="block text-xs font-bold text-stone-700 uppercase">Décrivez votre problème ou besoin *</label>
-                    <textarea id="description" rows="4" required class="w-full bg-stone-50 border border-stone-200 rounded-xl p-3 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Ex: Révision sécurité, crevaison roue arrière, bruit suspect dans le pédalier..."></textarea>
-                </div>
-
-                <div class="space-y-1">
-                    <label class="block text-xs font-bold text-stone-700 uppercase">Ajouter une photo du vélo ou de la panne (optionnel)</label>
-                    <div class="relative flex items-center">
-                        <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-camera"></i></span>
-                        <input type="file" id="photo" accept="image/*" class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-1.5 text-stone-600 focus:outline-none focus:border-rougeBizikleta text-xs file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-stone-200 file:text-stone-700 hover:file:bg-stone-300">
-                    </div>
-                </div>
-
-                <button type="submit" id="submitBtn" class="w-full bg-rougeBizikleta text-white font-bold py-3 px-4 rounded-xl hover:bg-red-700 transition text-xs uppercase tracking-wider shadow-sm">
-                    Envoyer ma demande de réservation
-                </button>
-
-                <!-- Message de succès / erreur -->
-                <div id="formMessage" class="hidden text-center text-xs font-bold p-3 rounded-xl"></div>
-
-                <p class="text-[11px] text-stone-500 text-center pt-2">
-                    Je vous recontacte rapidement pour valider le créneau horaire ensemble.
-                </p>
-            </form>
-        </div>
-    </main>
-
-    <!-- Script de validation et d'envoi via API -->
-    <script>
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const phoneInput = document.getElementById('telephone').value.trim();
-            const postalInput = document.getElementById('postalCode').value.trim();
-            
-            const telError = document.getElementById('telError');
-            const postalError = document.getElementById('postalError');
-            const formMessage = document.getElementById('formMessage');
-            const submitBtn = document.getElementById('submitBtn');
-
-            const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
-            const postalRegex = /^[0-9]{5}$/;
-
-            let isValid = true;
-
-            if (!phoneRegex.test(phoneInput)) {
-                telError.classList.remove('hidden');
-                isValid = false;
-            } else {
-                telError.classList.add('hidden');
-            }
-
-            if (!postalRegex.test(postalInput)) {
-                postalError.classList.remove('hidden');
-                isValid = false;
-            } else {
-                postalError.classList.add('hidden');
-            }
-
-            if (!isValid) return;
-
-            // Désactiver le bouton pendant l'envoi
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Envoi en cours...";
-
-            // Récupération des données du formulaire
-            const formData = {
-                nom: document.getElementById('nom').value,
-                telephone: phoneInput,
-                email: document.getElementById('email').value,
-                adresse: document.getElementById('adresse').value,
-                postalCode: postalInput,
-                typeVelo: document.getElementById('typeVelo').value,
-                conciergerie: document.getElementById('conciergerie').value,
-                prestation: document.getElementById('prestation').value,
-                description: document.getElementById('description').value
-            };
-
-            try {
-                // Remplace '/api/send-email' par ton endpoint serveur ou ta fonction serverless qui appelle Resend
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    formMessage.textContent = "Demande envoyée avec succès ! Je vous recontacte vite.";
-                    formMessage.className = "text-green-700 bg-green-50 border border-green-200 text-center text-xs font-bold p-3 rounded-xl block";
-                    document.getElementById('reservationForm').reset();
-                } else {
-                    throw new Error("Erreur lors de l'envoi");
-                }
-            } catch (error) {
-                // Solution de secours directe si pas de backend configuré : déclencher un mailto propre ou prévenir l'utilisateur
-                formMessage.textContent = "Erreur technique. Vous pouvez m'appeler directement au 06 14 75 36 47.";
-                formMessage.className = "text-rougeBizikleta bg-red-50 border border-red-200 text-center text-xs font-bold p-3 rounded-xl block";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = "Envoyer ma demande de réservation";
-            }
-        }
-    </script>
-
-    <!-- Footer -->
-    <footer class="w-full border-t border-stone-300 py-8 px-4 text-stone-700 text-xs sm:text-sm">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-            <div>
-                <p class="font-bold text-stone-900">Grenoble & Alentours</p>
-            </div>
-            <div class="space-y-2 text-center">
-                <p>
-                    <a href="tel:0614753647" class="hover:text-rougeBizikleta transition font-semibold">06 14 75 36 47</a> 
-                    <span class="mx-2">•</span> 
-                    <a href="mailto:bizikleta.reparation@gmail.com" class="hover:text-rougeBizikleta transition">bizikleta.reparation@gmail.com</a>
-                </p>
-            </div>
-            <div class="text-center md:text-right">
-                <p class="font-bold text-stone-900">Lundi-Dimanche</p>
-                <p class="text-stone-600">8h-19h</p>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+                        <!-- Option 2 : Dépannage express -->
+                        <label class="flex items-center gap-2.5 p-3 bg-stone-50 border border-stone-200 rounded-xl cursor-pointer hover:border-rougeBizikleta transition text-xs font-medium text-stone-800 [&:has(input:checked)]:border-rougeBizikleta [&:has(input:checked)]:bg-red-50/20 [&:has(input:checked)]:text-rougeBizikleta">
+                            <input type="radio" name="prestation" value="Depannage express" required class="accent-rougeBizikleta">
+                            <span class="w-6
