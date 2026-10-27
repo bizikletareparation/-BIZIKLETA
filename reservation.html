@@ -59,54 +59,76 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="space-y-1">
                         <label class="block text-xs font-bold text-stone-700 uppercase">Prénom & Nom *</label>
-                        <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Jean Dupont">
+                        <div class="relative flex items-center">
+                            <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-user"></i></span>
+                            <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Jean Dupont">
+                        </div>
                     </div>
                     <div class="space-y-1">
                         <label class="block text-xs font-bold text-stone-700 uppercase">Téléphone *</label>
-                        <input type="tel" id="telephone" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="0612345678">
-                        <span id="telError" class="text-[10px] text-rougeBizikleta hidden">Format invalide (ex: 0612345678 ou 06 12 34 56 78)</span>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-phone"></i></span>
+                            <input type="tel" id="telephone" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="0612345678">
+                        </div>
+                        <span id="telError" class="text-[10px] text-rougeBizikleta hidden">Format invalide (ex: 0612345678)</span>
                     </div>
                 </div>
 
                 <div class="space-y-1">
                     <label class="block text-xs font-bold text-stone-700 uppercase">Adresse email *</label>
-                    <input type="email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="jean.dupont@exemple.fr">
+                    <div class="relative flex items-center">
+                        <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-envelope"></i></span>
+                        <input type="email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="jean.dupont@exemple.fr">
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="sm:col-span-2 space-y-1">
                         <label class="block text-xs font-bold text-stone-700 uppercase">Adresse (Rue & Ville) *</label>
-                        <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="3 Cours Berriat, Grenoble">
+                        <div class="relative flex items-center">
+                            <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-location-dot"></i></span>
+                            <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="3 Cours Berriat, Grenoble">
+                        </div>
                     </div>
                     <div class="space-y-1">
                         <label class="block text-xs font-bold text-stone-700 uppercase">Code Postal *</label>
-                        <input type="text" id="postalCode" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="38000">
-                        <span id="postalError" class="text-[10px] text-rougeBizikleta hidden">Code postal invalide (5 chiffres)</span>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-3 text-rougeBizikleta text-xs"><i class="fa-solid fa-map-pin"></i></span>
+                            <input type="text" id="postalCode" required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="38000">
+                        </div>
+                        <span id="postalError" class="text-[10px] text-rougeBizikleta hidden">Invalide (5 chiffres)</span>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div class="space-y-1">
-                        <label class="block text-xs font-bold text-stone-700 uppercase">Type de prestation *</label>
-                        <select required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs">
-                            <option value="">Choisissez une option</option>
-                            <option value="Forfait revisions">Forfait révisions</option>
-                            <option value="Depannage express">Dépannage express</option>
-                            <option value="A la carte">À la carte</option>
-                        </select>
+                        <label class="block text-xs font-bold text-stone-700 uppercase">Type de vélo *</label>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-3 text-rougeBizikleta text-xs z-10"><i class="fa-solid fa-bicycle"></i></span>
+                            <select required class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs appearance-none">
+                                <option value="">Choisissez le type de vélo</option>
+                                <option value="Ville / VTC">Ville / VTC</option>
+                                <option value="VTT">VTT</option>
+                                <option value="Route / Gravel">Route / Gravel</option>
+                                <option value="Electrique / Cargo">Électrique / Cargo</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="space-y-1">
                         <label class="block text-xs font-bold text-stone-700 uppercase">Option Conciergerie ?</label>
-                        <select class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs">
-                            <option value="Non">Non (Intervention classique)</option>
-                            <option value="Oui (+10€)">Oui (+10 € : Récupération & retour atelier)</option>
-                        </select>
+                        <div class="relative flex items-center">
+                            <span class="absolute left-3 text-rougeBizikleta text-xs z-10"><i class="fa-solid fa-house-chimney"></i></span>
+                            <select class="w-full bg-stone-50 border border-stone-200 rounded-xl pl-9 pr-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs appearance-none">
+                                <option value="Non">Non (Intervention classique)</option>
+                                <option value="Oui (+10€)">Oui (+10 € : Récupération & retour atelier)</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
                 <div class="space-y-1">
-                    <label class="block text-xs font-bold text-stone-700 uppercase">Détails sur votre vélo et le problème *</label>
-                    <textarea rows="4" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Marque du vélo, type de transmission, description de la panne..."></textarea>
+                    <label class="block text-xs font-bold text-stone-700 uppercase">Décrivez votre problème ou besoin *</label>
+                    <textarea rows="4" required class="w-full bg-stone-50 border border-stone-200 rounded-xl p-3 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Ex: Révision sécurité, crevaison roue arrière, bruit suspect dans le pédalier..."></textarea>
                 </div>
 
                 <button type="submit" class="w-full bg-rougeBizikleta text-white font-bold py-3 px-4 rounded-xl hover:bg-red-700 transition text-xs uppercase tracking-wider shadow-sm">
@@ -129,13 +151,11 @@
             const telError = document.getElementById('telError');
             const postalError = document.getElementById('postalError');
 
-            // Expressions régulières de validation (Français : 10 chiffres pour le tel, 5 chiffres pour le code postal)
             const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
             const postalRegex = /^[0-9]{5}$/;
 
             let isValid = true;
 
-            // Vérification téléphone
             if (!phoneRegex.test(phoneInput)) {
                 telError.classList.remove('hidden');
                 isValid = false;
@@ -143,7 +163,6 @@
                 telError.classList.add('hidden');
             }
 
-            // Vérification code postal
             if (!postalRegex.test(postalInput)) {
                 postalError.classList.remove('hidden');
                 isValid = false;
@@ -152,7 +171,7 @@
             }
 
             if (!isValid) {
-                event.preventDefault(); // Bloque l'envoi du formulaire si une info est incorrecte
+                event.preventDefault();
                 return false;
             }
 
