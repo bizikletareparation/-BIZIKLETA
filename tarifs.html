@@ -52,12 +52,12 @@
             <p class="text-xs text-stone-600 uppercase tracking-widest font-semibold">Intervention à domicile à Grenoble</p>
         </div>
 
-        <!-- Encadré homogène : les 3 lignes ont exactement le même style en gras -->
+        <!-- Encadré homogène : les 3 informations -->
         <div class="bg-stone-50 p-4 rounded-2xl border border-stone-200 shadow-sm space-y-2 text-center text-xs text-stone-900 font-bold">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pb-2 border-b border-stone-200">
                 <div class="flex items-center justify-center gap-2">
                     <i class="fa-solid fa-house text-rougeBizikleta"></i>
-                    <span>Déplacement offert sur Grenoble & alentours</span>
+                    <span>Déplacement offert à Grenoble & alentours</span>
                 </div>
                 <div class="flex items-center justify-center gap-2">
                     <i class="fa-solid fa-tag text-rougeBizikleta"></i>
@@ -73,20 +73,50 @@
         <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-stone-200 space-y-6 text-sm text-stone-700">
             
             <!-- RÉVISIONS -->
-            <div class="space-y-2">
+            <div class="space-y-3">
                 <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Révision</h3>
-                <ul class="space-y-2 text-xs">
-                    <li class="flex justify-between border-b border-stone-100 pb-1">
-                        <div><span class="font-bold text-stone-900">Forfait révision SÉCURITÉ</span><p class="text-[10px] text-stone-500">Contrôle, Serrage & Réglage (freins, dérailleur, direction)</p></div>
-                        <span class="font-semibold text-rougeBizikleta">50 €</span>
+                <ul class="space-y-3 text-xs">
+                    <!-- SÉCURITÉ -->
+                    <li class="border-b border-stone-100 pb-3 space-y-1.5">
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-stone-900 text-sm">Forfait révision SÉCURITÉ</span>
+                            <span class="font-semibold text-rougeBizikleta text-sm">50 €</span>
+                        </div>
+                        <p class="text-[11px] text-stone-600 font-medium">Contrôles, réglages et serrages :</p>
+                        <ul class="section_card_pass__item-description-sublist list-disc list-inside pl-2 space-y-1 text-stone-500 text-[11px]">
+                            <li>Direction</li>
+                            <li>Système de freinage</li>
+                            <li>Transmission</li>
+                            <li>Manivelles, pédales, selle</li>
+                            <li>Pression pneumatiques</li>
+                            <li>Lubrification de la transmission</li>
+                        </ul>
                     </li>
-                    <li class="flex justify-between border-b border-stone-100 pb-1">
-                        <div><span class="font-bold text-stone-900">Forfait révision INTÉGRALE</span><p class="text-[10px] text-stone-500">SÉCURITÉ + Changement de la chaîne et de la cassette + Changement des patins ou des plaquettes de freins + Réglage des axes de moyeu des roues</p></div>
-                        <span class="font-semibold text-rougeBizikleta">90 €</span>
+
+                    <!-- INTÉGRALE -->
+                    <li class="border-b border-stone-100 pb-3 space-y-1.5">
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-stone-900 text-sm">Forfait révision INTÉGRALE</span>
+                            <span class="font-semibold text-rougeBizikleta text-sm">90 €</span>
+                        </div>
+                        <p class="text-[11px] text-stone-600 font-medium">SÉCURITÉ +</p>
+                        <ul class="list-disc list-inside pl-2 space-y-1 text-stone-500 text-[11px]">
+                            <li>Changement de la chaîne et de la cassette</li>
+                            <li>Changement des patins ou des plaquettes de freins</li>
+                            <li>Réglage des axes de moyeu des roues</li>
+                        </ul>
                     </li>
-                    <li class="flex justify-between border-b border-stone-100 pb-1">
-                        <div><span class="font-bold text-stone-900">Forfait révision PERFORMANCE</span><p class="text-[10px] text-stone-500">INTÉGRALE + Remplacement des câbles et gaines (transmission & freins) et/ou purge des freins hydrauliques</p></div>
-                        <span class="font-semibold text-rougeBizikleta">130 €</span>
+
+                    <!-- PERFORMANCE -->
+                    <li class="pb-1 space-y-1.5">
+                        <div class="flex justify-between items-start">
+                            <span class="font-bold text-stone-900 text-sm">Forfait révision PERFORMANCE</span>
+                            <span class="font-semibold text-rougeBizikleta text-sm">130 €</span>
+                        </div>
+                        <p class="text-[11px] text-stone-600 font-medium">INTÉGRALE +</p>
+                        <ul class="list-disc list-inside pl-2 space-y-1 text-stone-500 text-[11px]">
+                            <li>Remplacement des câbles et gaines (transmission & freins) et/ou purge des freins hydrauliques</li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -160,4 +190,53 @@
             <!-- DIRECTION -->
             <div class="space-y-2">
                 <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Direction</h3>
-                <ul class="space-y-2 text-
+                <ul class="space-y-2 text-xs">
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Réglage jeu de direction</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement jeu de direction</span><span class="font-semibold text-rougeBizikleta">40 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose guidoline</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement potence</span><span class="font-semibold text-rougeBizikleta">20 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre</span><span class="font-semibold text-rougeBizikleta">25 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement cintre route (pose guidoline incluse)</span><span class="font-semibold text-rougeBizikleta">50 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Remplacement poignées</span><span class="font-semibold text-rougeBizikleta">10 €</span></li>
+                </ul>
+            </div>
+
+            <!-- DIVERS -->
+            <div class="space-y-2">
+                <h3 class="font-bold text-stone-900 border-b pb-1 uppercase tracking-wider text-xs text-rougeBizikleta">Divers</h3>
+                <ul class="space-y-2 text-xs">
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage petit accessoire</span><span class="font-semibold text-rougeBizikleta">8 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose porte-bagages</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Pose garde-boue</span><span class="font-semibold text-rougeBizikleta">35 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo simple</span><span class="font-semibold text-rougeBizikleta">70 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet patin</span><span class="font-semibold text-rougeBizikleta">200 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Montage vélo complet hydraulique</span><span class="font-semibold text-rougeBizikleta">300 €</span></li>
+                    <li class="flex justify-between border-b border-stone-100 pb-1"><span>Nettoyage transmission rapide</span><span class="font-semibold text-rougeBizikleta">15 €</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-stone-300 py-8 px-4 text-stone-700 text-xs sm:text-sm">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <p class="font-bold text-stone-900">Grenoble & Alentours</p>
+            </div>
+            <div class="space-y-2 text-center">
+                <p>
+                    <a href="tel:0614753647" class="hover:text-rougeBizikleta transition font-semibold">06 14 75 36 47</a> 
+                    <span class="mx-2">•</span> 
+                    <a href="mailto:bizikleta.reparation@gmail.com" class="hover:text-rougeBizikleta transition">bizikleta.reparation@gmail.com</a>
+                </p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="font-bold text-stone-900">Lundi-Dimanche</p>
+                <p class="text-stone-600">8h-19h</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
