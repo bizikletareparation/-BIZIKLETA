@@ -8,30 +8,53 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { prestation, velo, description, nom, telephone, adresse, photo } = req.body;
+    const { 
+      nom, 
+      telephone, 
+      email, 
+      adresse, 
+      postalCode, 
+      typeVelo, 
+      conciergerie, 
+      prestation, 
+      description, 
+      photo 
+    } = req.body;
 
-    // Préparation des pièces jointes si une photo est présente
+    // Préparation des pièces jointes si une photo en base64 est présente
     const attachments = [];
     if (photo && photo.content) {
       attachments.push({
         filename: photo.filename || 'photo-velo.jpg',
-        content: photo.content
+        content: photo.content // Contenu base64 pur
       });
     }
 
     const data = await resend.emails.send({
       from: 'Bizikleta <onboarding@resend.dev>',
       to: ['bizikleta.reparation@gmail.com'],
-      subject: `🚲 Nouvelle réservation de ${nom} (${prestation})`,
+      replyTo: email,
+      subject: `🚲 Nouvelle réservation : ${nom} (${prestation})`,
       html: `
-        <h2>Nouvelle demande de rendez-vous - Bizikleta</h2>
-        <p><strong>Client :</strong> ${nom}</p>
-        <p><strong>Téléphone :</strong> ${telephone}</p>
-        <p><strong>Adresse :</strong> ${adresse}</p>
-        <p><strong>Prestation :</strong> ${prestation}</p>
-        <p><strong>Type de vélo :</strong> ${velo}</p>
-        <p><strong>Description :</strong> ${description || 'Aucune'}</p>
-        <p><em>${photo ? '📸 Une photo a été jointe à cet e-mail.' : 'Pas de photo fournie.'}</em></p>
+        <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e5e5e5; border-radius: 10px;">
+          <h2 style="color: #D32F2F; border-bottom: 2px solid #D32F2F; padding-bottom: 8px;">Nouvelle demande de rendez-vous</h2>
+          
+          <h3 style="color: #111; margin-top: 20px;">👤 Informations Client</h3>
+          <p><strong>Nom :</strong> ${nom}</p>
+          <p><strong>Téléphone :</strong> ${telephone}</p>
+          <p><strong>Email :</strong> ${email}</p>
+          <p><strong>Adresse :</strong> ${adresse}, ${postalCode}</p>
+
+          <h3 style="color: #111; margin-top: 20px;">🚲 Détails de l'intervention</h3>
+          <p><strong>Prestation :</strong> ${prestation}</p>
+          <p><strong>Type de vélo :</strong> ${typeVelo}</p>
+          <p><strong>Option Conciergerie :</strong> ${conciergerie}</p>
+          <p><strong>Description du problème :</strong><br>${description ? description.replace(/\n/g, '<br>') : 'Aucune description'}</p>
+
+          <p style="margin-top: 30px; font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 10px;">
+            ${photo ? '📸 Une photo a été jointe à cet e-mail.' : 'Aucune photo fournie.'}
+          </p>
+        </div>
       `,
       attachments: attachments
     });
