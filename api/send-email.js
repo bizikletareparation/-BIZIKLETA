@@ -21,12 +21,12 @@ module.exports = async (req, res) => {
       photo 
     } = req.body;
 
-    // Préparation des pièces jointes si une photo en base64 est présente
+    // Préparation de la pièce jointe avec conversion en Buffer
     const attachments = [];
     if (photo && photo.content) {
       attachments.push({
         filename: photo.filename || 'photo-velo.jpg',
-        content: photo.content // Contenu base64 pur
+        content: Buffer.from(photo.content, 'base64') // Conversion indispensable pour Resend
       });
     }
 
