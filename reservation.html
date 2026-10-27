@@ -45,69 +45,120 @@
         </div>
     </header>
 
-    <!-- Contenu Principal : Formulaire -->
+    <!-- Contenu Principal : Formulaire de Réservation -->
     <main class="flex-grow max-w-xl mx-auto px-4 py-12 space-y-6 w-full">
         <div class="text-center space-y-2">
-            <h1 class="text-3xl sm:text-4xl font-bold font-basque text-stone-900">Réservation à Grenoble</h1>
-            <p class="text-xs text-stone-600 uppercase tracking-widest font-semibold">Remplissez le formulaire pour planifier une intervention</p>
+            <h1 class="text-3xl sm:text-4xl font-bold font-basque text-stone-900">Réservation</h1>
+            <p class="text-xs text-stone-600 uppercase tracking-widest font-semibold">Prenez rendez-vous à Grenoble & alentours</p>
         </div>
 
+        <!-- Formulaire avec script de validation -->
         <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-stone-200">
-            <form id="reservation-form" onsubmit="envoyerReservation(event)" class="space-y-4 text-left text-sm">
-                <div>
-                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Type de vélo *</label>
-                    <select name="velo" id="velo" class="w-full p-2.5 border rounded-xl bg-white text-xs focus:outline-none focus:border-rougeBizikleta" required>
-                        <option value="">-- Sélectionnez votre vélo --</option>
-                        <option value="Vélo de ville / VTC">Vélo de ville / VTC</option>
-                        <option value="Vélo électrique (VAE)">Vélo électrique (VAE)</option>
-                        <option value="VTT / Route">VTT / Route</option>
-                        <option value="Vélo Cargo / Longtail">Vélo Cargo / Longtail</option>
-                    </select>
+            <form id="reservationForm" action="mailto:bizikleta.reparation@gmail.com" method="POST" enctype="text/plain" class="space-y-4 text-sm" onsubmit="return validateForm(event)">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-700 uppercase">Prénom & Nom *</label>
+                        <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Jean Dupont">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-700 uppercase">Téléphone *</label>
+                        <input type="tel" id="telephone" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="0612345678">
+                        <span id="telError" class="text-[10px] text-rougeBizikleta hidden">Format invalide (ex: 0612345678 ou 06 12 34 56 78)</span>
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Prestation souhaitée *</label>
-                    <select name="prestation" id="prestation" class="w-full p-2.5 border rounded-xl bg-white text-xs focus:outline-none focus:border-rougeBizikleta" required>
-                        <option value="">-- Sélectionnez une prestation --</option>
-                        <optgroup label="🛠️ Forfaits Révision">
-                            <option value="Forfait Révision SECURITE (50 €)">Forfait Révision SÉCURITÉ (50 €)</option>
-                            <option value="Forfait Révision INTEGRALE (90 €)">Forfait Révision INTÉGRALE (90 €)</option>
-                            <option value="Forfait Révision PERFORMANCE (130 €)">Forfait Révision PERFORMANCE (130 €)</option>
-                        </optgroup>
-                        <optgroup label="⚡ Dépannage">
-                            <option value="Crevaison Express - Roue classique (25 €)">Crevaison Express - Roue classique (25 €)</option>
-                            <option value="Crevaison Express - Roue moteur (40 €)">Crevaison Express - Roue moteur (40 €)</option>
-                        </optgroup>
-                        <optgroup label="⚙️ Autre">
-                            <option value="Réparation à la carte">Réparation à la carte</option>
-                            <option value="Plusieurs vélos / Entreprise">Plusieurs vélos / Entreprise</option>
-                        </optgroup>
-                    </select>
+                <div class="space-y-1">
+                    <label class="block text-xs font-bold text-stone-700 uppercase">Adresse email *</label>
+                    <input type="email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="jean.dupont@exemple.fr">
                 </div>
 
-                <div>
-                    <label class="block font-semibold text-stone-700 mb-1 text-xs">Description du problème</label>
-                    <textarea name="description" id="description" rows="3" placeholder="Décrivez la panne ou le besoin..." class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta"></textarea>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="sm:col-span-2 space-y-1">
+                        <label class="block text-xs font-bold text-stone-700 uppercase">Adresse (Rue & Ville) *</label>
+                        <input type="text" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="3 Cours Berriat, Grenoble">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-700 uppercase">Code Postal *</label>
+                        <input type="text" id="postalCode" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="38000">
+                        <span id="postalError" class="text-[10px] text-rougeBizikleta hidden">Code postal invalide (5 chiffres)</span>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input type="text" name="nom" id="nom" placeholder="Votre nom *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
-                    <input type="tel" name="telephone" id="telephone" placeholder="Téléphone *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
-                    <input type="text" name="code_postal" id="code_postal" placeholder="Code postal *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
-                    <input type="text" name="adresse" id="adresse" placeholder="Adresse d'intervention *" class="w-full p-2.5 border rounded-xl text-xs focus:outline-none focus:border-rougeBizikleta" required>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-700 uppercase">Type de prestation *</label>
+                        <select required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs">
+                            <option value="">Choisissez une option</option>
+                            <option value="Forfait revisions">Forfait révisions</option>
+                            <option value="Depannage express">Dépannage express</option>
+                            <option value="A la carte">À la carte</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold text-stone-700 uppercase">Option Conciergerie ?</label>
+                        <select class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs">
+                            <option value="Non">Non (Intervention classique)</option>
+                            <option value="Oui (+10€)">Oui (+10 € : Récupération & retour atelier)</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div>
-                    <label for="photo" class="block font-medium mb-1 text-xs text-stone-600">Photo du problème (optionnel, max 4 Mo) :</label>
-                    <input type="file" id="photo" accept="image/*" class="w-full p-2 border rounded-xl text-xs bg-stone-50">
+                <div class="space-y-1">
+                    <label class="block text-xs font-bold text-stone-700 uppercase">Détails sur votre vélo et le problème *</label>
+                    <textarea rows="4" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-stone-800 focus:outline-none focus:border-rougeBizikleta text-xs" placeholder="Marque du vélo, type de transmission, description de la panne..."></textarea>
                 </div>
 
-                <button type="submit" id="submit-btn" class="w-full bg-rougeBizikleta text-white py-3 rounded-xl font-bold hover:bg-red-700 transition shadow-md cursor-pointer">
-                    Envoyer ma demande
+                <button type="submit" class="w-full bg-rougeBizikleta text-white font-bold py-3 px-4 rounded-xl hover:bg-red-700 transition text-xs uppercase tracking-wider shadow-sm">
+                    Envoyer ma demande de réservation
                 </button>
+
+                <p class="text-[11px] text-stone-500 text-center pt-2">
+                    Je vous recontacte rapidement pour valider le créneau horaire ensemble.
+                </p>
             </form>
         </div>
     </main>
+
+    <!-- Script de vérification -->
+    <script>
+        function validateForm(event) {
+            const phoneInput = document.getElementById('telephone').value.trim();
+            const postalInput = document.getElementById('postalCode').value.trim();
+            
+            const telError = document.getElementById('telError');
+            const postalError = document.getElementById('postalError');
+
+            // Expressions régulières de validation (Français : 10 chiffres pour le tel, 5 chiffres pour le code postal)
+            const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
+            const postalRegex = /^[0-9]{5}$/;
+
+            let isValid = true;
+
+            // Vérification téléphone
+            if (!phoneRegex.test(phoneInput)) {
+                telError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                telError.classList.add('hidden');
+            }
+
+            // Vérification code postal
+            if (!postalRegex.test(postalInput)) {
+                postalError.classList.remove('hidden');
+                isValid = false;
+            } else {
+                postalError.classList.add('hidden');
+            }
+
+            if (!isValid) {
+                event.preventDefault(); // Bloque l'envoi du formulaire si une info est incorrecte
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="w-full border-t border-stone-300 py-8 px-4 text-stone-700 text-xs sm:text-sm">
@@ -129,88 +180,5 @@
         </div>
     </footer>
 
-    <!-- Script de gestion du formulaire -->
-    <script>
-        function fileToBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result.split(',')[1]);
-                reader.onerror = (error) => reject(error);
-            });
-        }
-
-        async function envoyerReservation(event) {
-            event.preventDefault();
-
-            const submitBtn = document.getElementById('submit-btn');
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.innerText = "Envoi en cours...";
-            }
-
-            const nom = document.getElementById('nom').value;
-            const telephone = document.getElementById('telephone').value;
-            const adresse = document.getElementById('adresse').value;
-            const codePostal = document.getElementById('code_postal').value;
-            const prestation = document.getElementById('prestation').value;
-            const velo = document.getElementById('velo').value;
-            const description = document.getElementById('description').value;
-
-            const photoInput = document.getElementById('photo');
-            let photoData = null;
-
-            if (photoInput && photoInput.files.length > 0) {
-                const file = photoInput.files[0];
-                if (file.size > 4 * 1024 * 1024) {
-                    alert("La photo est trop lourde (maximum 4 Mo).");
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.innerText = "Envoyer ma demande";
-                    }
-                    return;
-                }
-                try {
-                    const base64Content = await fileToBase64(file);
-                    photoData = { filename: file.name, content: base64Content };
-                } catch (err) {
-                    console.error(err);
-                }
-            }
-
-            try {
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        nom,
-                        telephone,
-                        adresse: `${adresse} (${codePostal})`,
-                        prestation,
-                        velo,
-                        description,
-                        photo: photoData
-                    })
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    alert("Demande envoyée avec succès ! Je vous recontacte rapidement.");
-                    document.getElementById('reservation-form').reset();
-                } else {
-                    alert("Erreur lors de l'envoi. Appelez directement au 06 14 75 36 47.");
-                }
-            } catch (err) {
-                console.error(err);
-                alert("Impossible de joindre le serveur. Appelez directement au 06 14 75 36 47.");
-            } finally {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = "Envoyer ma demande";
-                }
-            }
-        }
-    </script>
 </body>
 </html>
