@@ -7,9 +7,20 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Police personnalisée .ttf -->
+    <style>
+        @font-face {
+            font-family: 'PoliceBizikleta';
+            src: url('fonts/nom-de-ta-police.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+
     <script>
         tailwind.config = {
             theme: {
@@ -19,7 +30,7 @@
                         rougeBizikleta: '#D32F2F',
                     },
                     fontFamily: {
-                        basque: ['"Playfair Display"', 'serif'],
+                        basque: ['"PoliceBizikleta"', 'serif'],
                         sans: ['Inter', 'sans-serif'],
                     }
                 }
@@ -35,7 +46,7 @@
         <!-- Logo et Titre Principal -->
         <div class="space-y-2">
             <!-- Insertion du logo -->
-            <img src="images/logo10.JPG" alt="Logo Bizikleta - Atelier de réparation de vélos" class="w-30 sm:w-40 h-auto mx-auto mb-4 object-contain">
+            <img src="images/logo10.JPG" alt="Logo Bizikleta - Atelier de réparation de vélos" class="w-32 sm:w-40 h-auto mx-auto mb-4 object-contain">
             
             <h1 class="text-5xl sm:text-7xl font-black font-basque text-rougeBizikleta tracking-wide uppercase drop-shadow-sm">
                 Bizikleta
